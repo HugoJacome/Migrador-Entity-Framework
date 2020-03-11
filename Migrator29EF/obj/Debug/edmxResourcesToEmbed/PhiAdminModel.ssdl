@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="phiAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Acquirers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="256" />
+    <Property Name="AzureAD" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Activities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'phi_admin.dbo.ApiKeys' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ApiKeys">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="InstId" />
+      <PropertyRef Name="Creation" />
+      <PropertyRef Name="Expiration" />
+      <PropertyRef Name="Hash" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="InstId" Type="bigint" Nullable="false" />
+    <Property Name="Creation" Type="date" Nullable="false" />
+    <Property Name="Expiration" Type="date" Nullable="false" />
+    <Property Name="Hash" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationUserGroup">
+    <Key>
+      <PropertyRef Name="ApplicationUserId" />
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="ApplicationUserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="GroupId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoleClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedName" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="ProviderDisplayName" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="450" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="InstitutionId" Type="bigint" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="ConcurrencyStamp" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEnd" Type="datetimeoffset" Precision="7" />
+    <Property Name="NormalizedEmail" Type="nvarchar" MaxLength="256" />
+    <Property Name="NormalizedUserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="UserFullName" Type="nvarchar" MaxLength="256" />
+    <Property Name="LastSignIn" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="AzureId" Type="nvarchar" MaxLength="450" />
+    <Property Name="BranchId" Type="bigint" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditLog2">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Institution" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ResourceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ResourceType" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ResourceId" Type="bigint" Nullable="false" />
+    <Property Name="EntityType" Type="nvarchar" MaxLength="100" />
+    <Property Name="EntityName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Action" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Data" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="BranchId" Type="bigint" />
+    <Property Name="IP" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="AuditLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entity" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="256" />
+    <Property Name="Institution" Type="nvarchar" MaxLength="256" />
+    <Property Name="Result" Type="nvarchar" MaxLength="256" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Authorizers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="256" />
+    <Property Name="AzureAD" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionId" Type="bigint" Nullable="false" />
+    <Property Name="State" Type="bit" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="Province" Type="varchar" MaxLength="50" />
+    <Property Name="Location" Type="varchar" MaxLength="50" />
+    <Property Name="Zone" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CoreIdentifier" Type="nvarchar" MaxLength="100" />
+    <Property Name="Identifiers" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CardModules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ResourceId" Type="bigint" Nullable="false" />
+    <Property Name="SearchUrl" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DBConnectionString" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CVVUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="PANHashTable" Type="nvarchar" MaxLength="50" />
+    <Property Name="DebitUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="Bioserver" Type="bit" />
+    <Property Name="Contracts" Type="bit" />
+    <Property Name="EntityRef" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotificationUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="BioServerUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="Associates" Type="bit" />
+    <Property Name="MoreThanOneCard" Type="bit" />
+    <Property Name="DBBackUpConnectionString" Type="nvarchar" MaxLength="500" />
+    <Property Name="CVVConfig" Type="nvarchar" MaxLength="500" />
+    <Property Name="DebitSchedule" Type="nvarchar" MaxLength="50" />
+    <Property Name="DebitVersion" Type="int" />
+    <Property Name="Nominadas" Type="bit" />
+    <Property Name="Innominadas" Type="bit" />
+    <Property Name="Config" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Entities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="EntitiesActivities">
+    <Key>
+      <PropertyRef Name="EntityId" />
+      <PropertyRef Name="ActivityId" />
+    </Key>
+    <Property Name="EntityId" Type="int" Nullable="false" />
+    <Property Name="ActivityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EntityActivities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EntityVisible" Type="bit" Nullable="false" />
+    <Property Name="EntityDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="EntityModule" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActivityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActivityVisible" Type="bit" Nullable="false" />
+    <Property Name="ActivityDescription" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsAuditable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupPermission">
+    <Key>
+      <PropertyRef Name="GroupPermissionId" />
+    </Key>
+    <Property Name="GroupPermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionId" Type="bigint" Nullable="false" />
+    <Property Name="GroupId" Type="bigint" Nullable="false" />
+    <Property Name="ResourceId" Type="bigint" Nullable="false" />
+    <Property Name="Roles" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupName" Type="nvarchar(max)" />
+    <Property Name="BaseResource" Type="bigint" Nullable="false" />
+    <Property Name="InstitutionId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Institutions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IdResource" Type="bigint" Nullable="false" />
+    <Property Name="IAMResourceId" Type="bigint" Nullable="false" />
+    <Property Name="CMResourceId" Type="bigint" />
+    <Property Name="TGResourceId" Type="bigint" />
+    <Property Name="ReportResourceId" Type="bigint" />
+    <Property Name="ClientID" Type="nvarchar(max)" />
+    <Property Name="Authority" Type="nvarchar(max)" />
+    <Property Name="AuthType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServerID" Type="nvarchar(max)" />
+    <Property Name="Secret" Type="nvarchar(max)" />
+    <Property Name="ServerScope" Type="nvarchar(max)" />
+    <Property Name="EntityRef" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchIdentifiers" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'phi_admin.dbo.Logs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityId" Type="int" />
+    <Property Name="EntityId" Type="int" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="450" />
+    <Property Name="InstitutionId" Type="bigint" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="AgencyId" Type="int" />
+  </EntityType>
+  <EntityType Name="Resources">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="ResourceType" Type="bigint" Nullable="false" />
+    <Property Name="EntityRef" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorizerId" Type="bigint" Nullable="false" />
+    <Property Name="AcquirerId" Type="bigint" Nullable="false" />
+    <Property Name="ATM_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Process_Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Resources__Paren__05D8E0BE">
+    <End Role="Resources" Type="Self.Resources" Multiplicity="0..1" />
+    <End Role="Resources1" Type="Self.Resources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Resources1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agencies_Institutions_InstitutionId">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
+    <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationUserGroup_AspNetUsers_ApplicationUserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ApplicationUserGroup" Type="Self.ApplicationUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ApplicationUserGroup">
+        <PropertyRef Name="ApplicationUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationUserGroup_Groups_GroupId">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ApplicationUserGroup" Type="Self.ApplicationUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GroupId" />
+      </Principal>
+      <Dependent Role="ApplicationUserGroup">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetRoleClaims">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Institutions_InstitutionId">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntitiesActivities_Activities">
+    <End Role="Activities" Type="Self.Activities" Multiplicity="1" />
+    <End Role="EntitiesActivities" Type="Self.EntitiesActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntitiesActivities">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EntitiesActivities_Entities">
+    <End Role="Entities" Type="Self.Entities" Multiplicity="1" />
+    <End Role="EntitiesActivities" Type="Self.EntitiesActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EntitiesActivities">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Institutions_Resource">
+    <End Role="Resources" Type="Self.Resources" Multiplicity="1" />
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Institutions">
+        <PropertyRef Name="IdResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Activities">
+    <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Agencies">
+    <End Role="Branches" Type="Self.Branches" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="AgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Entities">
+    <End Role="Entities" Type="Self.Entities" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Institutions">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_Acquirers">
+    <End Role="Acquirers" Type="Self.Acquirers" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acquirers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="AcquirerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_Authorizers1">
+    <End Role="Authorizers" Type="Self.Authorizers" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authorizers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="AuthorizerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="phiAdminModelStoreContainer">
+    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Acquirers" EntityType="Self.Acquirers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationUserGroup" EntityType="Self.ApplicationUserGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuditLog2" EntityType="Self.AuditLog2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Authorizers" EntityType="Self.Authorizers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardModules" EntityType="Self.CardModules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entities" EntityType="Self.Entities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntitiesActivities" EntityType="Self.EntitiesActivities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityActivities" EntityType="Self.EntityActivities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupPermission" EntityType="Self.GroupPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Institutions" EntityType="Self.Institutions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Resources" EntityType="Self.Resources" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApiKeys" EntityType="Self.ApiKeys" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ApiKeys].[Id] AS [Id], 
+    [ApiKeys].[InstId] AS [InstId], 
+    [ApiKeys].[Creation] AS [Creation], 
+    [ApiKeys].[Expiration] AS [Expiration], 
+    [ApiKeys].[Hash] AS [Hash]
+    FROM [dbo].[ApiKeys] AS [ApiKeys]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Logs" EntityType="Self.Logs" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Logs].[Id] AS [Id], 
+    [Logs].[ActivityId] AS [ActivityId], 
+    [Logs].[EntityId] AS [EntityId], 
+    [Logs].[Date] AS [Date], 
+    [Logs].[UserId] AS [UserId], 
+    [Logs].[InstitutionId] AS [InstitutionId], 
+    [Logs].[Description] AS [Description], 
+    [Logs].[AgencyId] AS [AgencyId]
+    FROM [dbo].[Logs] AS [Logs]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Resources__Paren__05D8E0BE" Association="Self.FK__Resources__Paren__05D8E0BE">
+      <End Role="Resources" EntitySet="Resources" />
+      <End Role="Resources1" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agencies_Institutions_InstitutionId" Association="Self.FK_Agencies_Institutions_InstitutionId">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationUserGroup_AspNetUsers_ApplicationUserId" Association="Self.FK_ApplicationUserGroup_AspNetUsers_ApplicationUserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ApplicationUserGroup" EntitySet="ApplicationUserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationUserGroup_Groups_GroupId" Association="Self.FK_ApplicationUserGroup_Groups_GroupId">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="ApplicationUserGroup" EntitySet="ApplicationUserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles_RoleId" Association="Self.FK_AspNetUserRoles_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers_UserId" Association="Self.FK_AspNetUserRoles_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Institutions_InstitutionId" Association="Self.FK_AspNetUsers_Institutions_InstitutionId">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntitiesActivities_Activities" Association="Self.FK_EntitiesActivities_Activities">
+      <End Role="Activities" EntitySet="Activities" />
+      <End Role="EntitiesActivities" EntitySet="EntitiesActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EntitiesActivities_Entities" Association="Self.FK_EntitiesActivities_Entities">
+      <End Role="Entities" EntitySet="Entities" />
+      <End Role="EntitiesActivities" EntitySet="EntitiesActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Institutions_Resource" Association="Self.FK_Institutions_Resource">
+      <End Role="Resources" EntitySet="Resources" />
+      <End Role="Institutions" EntitySet="Institutions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Activities" Association="Self.FK_Logs_Activities">
+      <End Role="Activities" EntitySet="Activities" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Agencies" Association="Self.FK_Logs_Agencies">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_AspNetUsers" Association="Self.FK_Logs_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Entities" Association="Self.FK_Logs_Entities">
+      <End Role="Entities" EntitySet="Entities" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Institutions" Association="Self.FK_Logs_Institutions">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_Acquirers" Association="Self.FK_Transactions_Acquirers">
+      <End Role="Acquirers" EntitySet="Acquirers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_Authorizers1" Association="Self.FK_Transactions_Authorizers1">
+      <End Role="Authorizers" EntitySet="Authorizers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

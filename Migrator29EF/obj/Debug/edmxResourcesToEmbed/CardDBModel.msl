@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CardDB_MRModelStoreContainer" CdmEntityContainer="CardDBEntities">
+    <EntitySetMapping Name="BINs">
+      <EntityTypeMapping TypeName="CardDB_MRModel.BINs">
+        <MappingFragment StoreEntitySet="BINs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BIN" ColumnName="BIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardBatches">
+      <EntityTypeMapping TypeName="CardDB_MRModel.CardBatches">
+        <MappingFragment StoreEntitySet="CardBatches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="InitialSequential" ColumnName="InitialSequential" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardRequests">
+      <EntityTypeMapping TypeName="CardDB_MRModel.CardRequests">
+        <MappingFragment StoreEntitySet="CardRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+          <ScalarProperty Name="Identification" ColumnName="Identification" />
+          <ScalarProperty Name="PrintedName" ColumnName="PrintedName" />
+          <ScalarProperty Name="Quota" ColumnName="Quota" />
+          <ScalarProperty Name="CardProfile" ColumnName="CardProfile" />
+          <ScalarProperty Name="DeliveryAgency" ColumnName="DeliveryAgency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Cards">
+        <MappingFragment StoreEntitySet="Cards">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="LastMovDate" ColumnName="LastMovDate" />
+          <ScalarProperty Name="EmissionDate" ColumnName="EmissionDate" />
+          <ScalarProperty Name="PINLastChangeDate" ColumnName="PINLastChangeDate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="CashQuota" ColumnName="CashQuota" />
+          <ScalarProperty Name="PurchaseQuota" ColumnName="PurchaseQuota" />
+          <ScalarProperty Name="OFFSET" ColumnName="OFFSET" />
+          <ScalarProperty Name="Sequential" ColumnName="Sequential" />
+          <ScalarProperty Name="PINAttempts" ColumnName="PINAttempts" />
+          <ScalarProperty Name="ATC_EMV" ColumnName="ATC_EMV" />
+          <ScalarProperty Name="PrintedName" ColumnName="PrintedName" />
+          <ScalarProperty Name="DeliveryBranchId" ColumnName="DeliveryBranchId" />
+          <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+          <ScalarProperty Name="MaskedNumber" ColumnName="MaskedNumber" />
+          <ScalarProperty Name="HASH" ColumnName="HASH" />
+          <ScalarProperty Name="Seed" ColumnName="Seed" />
+          <ScalarProperty Name="ChangePIN" ColumnName="ChangePIN" />
+          <ScalarProperty Name="LastCashDate" ColumnName="LastCashDate" />
+          <ScalarProperty Name="LastPurchaseDate" ColumnName="LastPurchaseDate" />
+          <ScalarProperty Name="CardDeliveryDate" ColumnName="CardDeliveryDate" />
+          <ScalarProperty Name="CardActivationDate" ColumnName="CardActivationDate" />
+          <ScalarProperty Name="CashTransPerDay" ColumnName="CashTransPerDay" />
+          <ScalarProperty Name="RequestBranchId" ColumnName="RequestBranchId" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="LastMaintenanceFeeChargeDate" ColumnName="LastMaintenanceFeeChargeDate" />
+          <ScalarProperty Name="LastTransactions" ColumnName="LastTransactions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CardsAccounts">
+      <EntityTypeMapping TypeName="CardDB_MRModel.CardsAccounts">
+        <MappingFragment StoreEntitySet="CardsAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="IsPrincipal" ColumnName="IsPrincipal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Identification" ColumnName="Identification" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+          <ScalarProperty Name="IdentityType" ColumnName="IdentityType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="PrefixId" ColumnName="PrefixId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="InitialSequential" ColumnName="InitialSequential" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="NotifyDate" ColumnName="NotifyDate" />
+          <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AutoGeneration" ColumnName="AutoGeneration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersTags">
+      <EntityTypeMapping TypeName="CardDB_MRModel.OrdersTags">
+        <MappingFragment StoreEntitySet="OrdersTags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prefixes">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Prefixes">
+        <MappingFragment StoreEntitySet="Prefixes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BINId" ColumnName="BINId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Sequential" ColumnName="Sequential" />
+          <ScalarProperty Name="FPEInfo" ColumnName="FPEInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Profiles">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BINId" ColumnName="BINId" />
+          <ScalarProperty Name="IMK_AC_SPEC" ColumnName="IMK_AC_SPEC" />
+          <ScalarProperty Name="CVK_SPEC" ColumnName="CVK_SPEC" />
+          <ScalarProperty Name="PVK_SPEC" ColumnName="PVK_SPEC" />
+          <ScalarProperty Name="ATMDailyLimit" ColumnName="ATMDailyLimit" />
+          <ScalarProperty Name="CardValidity" ColumnName="CardValidity" />
+          <ScalarProperty Name="PINValidity" ColumnName="PINValidity" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="ProviderFileNameFormat" ColumnName="ProviderFileNameFormat" />
+          <ScalarProperty Name="ProviderHeaderFormat" ColumnName="ProviderHeaderFormat" />
+          <ScalarProperty Name="ProviderRecordFormat" ColumnName="ProviderRecordFormat" />
+          <ScalarProperty Name="ProviderFooterFormat" ColumnName="ProviderFooterFormat" />
+          <ScalarProperty Name="PurchaseDailyLimit" ColumnName="PurchaseDailyLimit" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="InputFilePerBranch" ColumnName="InputFilePerBranch" />
+          <ScalarProperty Name="MaxCashTransPerDay" ColumnName="MaxCashTransPerDay" />
+          <ScalarProperty Name="CashLimit" ColumnName="CashLimit" />
+          <ScalarProperty Name="MaintenanceFee" ColumnName="MaintenanceFee" />
+          <ScalarProperty Name="CVK2_SPEC" ColumnName="CVK2_SPEC" />
+          <ScalarProperty Name="Config" ColumnName="Config" />
+          <ScalarProperty Name="EnvelopeFormat" ColumnName="EnvelopeFormat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Providers">
+        <MappingFragment StoreEntitySet="Providers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LogikardURL" ColumnName="LogikardURL" />
+          <ScalarProperty Name="LogikardUsername" ColumnName="LogikardUsername" />
+          <ScalarProperty Name="LogikardPassword" ColumnName="LogikardPassword" />
+          <ScalarProperty Name="LogikardPgpKey" ColumnName="LogikardPgpKey" />
+          <ScalarProperty Name="LogikardPgpKeyFileName" ColumnName="LogikardPgpKeyFileName" />
+          <ScalarProperty Name="LogikardPgpKeyExpDate" ColumnName="LogikardPgpKeyExpDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="CardDB_MRModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DenariusTerminals">
+      <EntityTypeMapping TypeName="CardDB_MRModel.DenariusTerminals">
+        <MappingFragment StoreEntitySet="DenariusTerminals">
+          <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="priority" ColumnName="priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

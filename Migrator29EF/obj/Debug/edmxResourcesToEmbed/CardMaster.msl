@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CardMaster29OctubreMigrModelStoreContainer" CdmEntityContainer="CardMasterEntities">
+    <EntitySetMapping Name="AGENCIA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.AGENCIA">
+        <MappingFragment StoreEntitySet="AGENCIA">
+          <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="AGE_DESCRIPCION" ColumnName="AGE_DESCRIPCION" />
+          <ScalarProperty Name="AGE_ESTADO" ColumnName="AGE_ESTADO" />
+          <ScalarProperty Name="CIU_CODIGO" ColumnName="CIU_CODIGO" />
+          <ScalarProperty Name="AGE_UBICACION" ColumnName="AGE_UBICACION" />
+          <ScalarProperty Name="AGE_ZONA" ColumnName="AGE_ZONA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APLICACION_ESTADO_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.APLICACION_ESTADO_TARJETA">
+        <MappingFragment StoreEntitySet="APLICACION_ESTADO_TARJETA">
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+          <ScalarProperty Name="HABILITAR_TAR_NUMERO" ColumnName="HABILITAR_TAR_NUMERO" />
+          <ScalarProperty Name="HABILITAR_TIP_TAR_CODIGO" ColumnName="HABILITAR_TIP_TAR_CODIGO" />
+          <ScalarProperty Name="HABILITAR_EST_TAR_CODIGO" ColumnName="HABILITAR_EST_TAR_CODIGO" />
+          <ScalarProperty Name="HABILITAR_TAR_FECHA_SOLICITUD" ColumnName="HABILITAR_TAR_FECHA_SOLICITUD" />
+          <ScalarProperty Name="HABILITAR_TAR_CUPO_DIARIO_ATM" ColumnName="HABILITAR_TAR_CUPO_DIARIO_ATM" />
+          <ScalarProperty Name="HABILITAR_TAR_FECHA_EXPIRACION" ColumnName="HABILITAR_TAR_FECHA_EXPIRACION" />
+          <ScalarProperty Name="HABILITAR_TAR_FECHA_ENTREGA" ColumnName="HABILITAR_TAR_FECHA_ENTREGA" />
+          <ScalarProperty Name="HABILITAR_TAR_NOMBRE_IMPRESO" ColumnName="HABILITAR_TAR_NOMBRE_IMPRESO" />
+          <ScalarProperty Name="HABILITAR_ORD_CODIGO" ColumnName="HABILITAR_ORD_CODIGO" />
+          <ScalarProperty Name="HABILITAR_AGE_CODIGO" ColumnName="HABILITAR_AGE_CODIGO" />
+          <ScalarProperty Name="HABILITAR_AGE_DESCRIPTION_E" ColumnName="HABILITAR_AGE_DESCRIPTION_E" />
+          <ScalarProperty Name="HABILITAR_TAR_CELULAR" ColumnName="HABILITAR_TAR_CELULAR" />
+          <ScalarProperty Name="HABILITAR_CTA_NUMERO" ColumnName="HABILITAR_CTA_NUMERO" />
+          <ScalarProperty Name="HABILITAR_EST_CTA_CODIGO" ColumnName="HABILITAR_EST_CTA_CODIGO" />
+          <ScalarProperty Name="HABILITAR_TIP_CTA_CODIGO" ColumnName="HABILITAR_TIP_CTA_CODIGO" />
+          <ScalarProperty Name="HABILITAR_CLI_NOMBRE" ColumnName="HABILITAR_CLI_NOMBRE" />
+          <ScalarProperty Name="HABILITAR_CLI_IDENTIFICACION" ColumnName="HABILITAR_CLI_IDENTIFICACION" />
+          <ScalarProperty Name="HABILITAR_CLI_TELEFONO1" ColumnName="HABILITAR_CLI_TELEFONO1" />
+          <ScalarProperty Name="HABILITAR_CLI_TELEFONO2" ColumnName="HABILITAR_CLI_TELEFONO2" />
+          <ScalarProperty Name="HABILITAR_CLI_DIRECCION" ColumnName="HABILITAR_CLI_DIRECCION" />
+          <ScalarProperty Name="HABILITAR_CLI_E_MAIL" ColumnName="HABILITAR_CLI_E_MAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATM">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.ATM">
+        <MappingFragment StoreEntitySet="ATM">
+          <ScalarProperty Name="ATM_CODIGO" ColumnName="ATM_CODIGO" />
+          <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+          <ScalarProperty Name="ATM_USER" ColumnName="ATM_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CIUDAD">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.CIUDAD">
+        <MappingFragment StoreEntitySet="CIUDAD">
+          <ScalarProperty Name="CIU_CODIGO" ColumnName="CIU_CODIGO" />
+          <ScalarProperty Name="CIU_DESCRIPCION" ColumnName="CIU_DESCRIPCION" />
+          <ScalarProperty Name="PRO_CODIGO" ColumnName="PRO_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="CLI_CODIGO" ColumnName="CLI_CODIGO" />
+          <ScalarProperty Name="CLI_IDENTIFICACION" ColumnName="CLI_IDENTIFICACION" />
+          <ScalarProperty Name="CLI_NOMBRE" ColumnName="CLI_NOMBRE" />
+          <ScalarProperty Name="CLI_DIRECCCION" ColumnName="CLI_DIRECCCION" />
+          <ScalarProperty Name="CLI_TELEFONO1" ColumnName="CLI_TELEFONO1" />
+          <ScalarProperty Name="CLI_TELEFONO2" ColumnName="CLI_TELEFONO2" />
+          <ScalarProperty Name="CLI_E_MAIL" ColumnName="CLI_E_MAIL" />
+          <ScalarProperty Name="CLI_FECHA_CREACION" ColumnName="CLI_FECHA_CREACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE_CUENTA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.CLIENTE_CUENTA">
+        <MappingFragment StoreEntitySet="CLIENTE_CUENTA">
+          <ScalarProperty Name="CLI_CODIGO" ColumnName="CLI_CODIGO" />
+          <ScalarProperty Name="CTA_NUMERO" ColumnName="CTA_NUMERO" />
+          <ScalarProperty Name="CLI_CTA_OBSERVACION" ColumnName="CLI_CTA_OBSERVACION" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="TIP_CTA_CODIGO" ColumnName="TIP_CTA_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUENTA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.CUENTA">
+        <MappingFragment StoreEntitySet="CUENTA">
+          <ScalarProperty Name="CTA_NUMERO" ColumnName="CTA_NUMERO" />
+          <ScalarProperty Name="CTA_FECHA_APERTURA" ColumnName="CTA_FECHA_APERTURA" />
+          <ScalarProperty Name="EST_CTA_CODIGO" ColumnName="EST_CTA_CODIGO" />
+          <ScalarProperty Name="CTA_MONEDA" ColumnName="CTA_MONEDA" />
+          <ScalarProperty Name="TIP_CTA_CODIGO" ColumnName="TIP_CTA_CODIGO" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="CTA_SALDO_CONTABLE" ColumnName="CTA_SALDO_CONTABLE" />
+          <ScalarProperty Name="CTA_SALDO_DISPONIBLE" ColumnName="CTA_SALDO_DISPONIBLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATAFAST_ISO_CONFIGURE">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.DATAFAST_ISO_CONFIGURE">
+        <MappingFragment StoreEntitySet="DATAFAST_ISO_CONFIGURE">
+          <ScalarProperty Name="bitmapNro" ColumnName="bitmapNro" />
+          <ScalarProperty Name="vli" ColumnName="vli" />
+          <ScalarProperty Name="longitud" ColumnName="longitud" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATAFAST_ISO_LOG">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.DATAFAST_ISO_LOG">
+        <MappingFragment StoreEntitySet="DATAFAST_ISO_LOG">
+          <ScalarProperty Name="Iso_MessageId" ColumnName="Iso_MessageId" />
+          <ScalarProperty Name="Iso_BitMap_A" ColumnName="Iso_BitMap_A" />
+          <ScalarProperty Name="Iso_BitMap_B" ColumnName="Iso_BitMap_B" />
+          <ScalarProperty Name="Iso_PrimaryAccountNumber" ColumnName="Iso_PrimaryAccountNumber" />
+          <ScalarProperty Name="Iso_ProcessingCode" ColumnName="Iso_ProcessingCode" />
+          <ScalarProperty Name="Iso_TransactionAmount" ColumnName="Iso_TransactionAmount" />
+          <ScalarProperty Name="Iso_TransmitionDateTime" ColumnName="Iso_TransmitionDateTime" />
+          <ScalarProperty Name="Iso_SystemTraceAuditNumber" ColumnName="Iso_SystemTraceAuditNumber" />
+          <ScalarProperty Name="Iso_LocalTranTime" ColumnName="Iso_LocalTranTime" />
+          <ScalarProperty Name="Iso_LocalTranDate" ColumnName="Iso_LocalTranDate" />
+          <ScalarProperty Name="Iso_ExpirationDate" ColumnName="Iso_ExpirationDate" />
+          <ScalarProperty Name="Iso_SettlemenDate" ColumnName="Iso_SettlemenDate" />
+          <ScalarProperty Name="Iso_LocalTranDateTime" ColumnName="Iso_LocalTranDateTime" />
+          <ScalarProperty Name="Iso_MerchantType" ColumnName="Iso_MerchantType" />
+          <ScalarProperty Name="Iso_POSEntryMode" ColumnName="Iso_POSEntryMode" />
+          <ScalarProperty Name="Iso_CardSequenceNumber" ColumnName="Iso_CardSequenceNumber" />
+          <ScalarProperty Name="Iso_AdquiringInstId" ColumnName="Iso_AdquiringInstId" />
+          <ScalarProperty Name="Iso_ForwardingInstId" ColumnName="Iso_ForwardingInstId" />
+          <ScalarProperty Name="Iso_Track2" ColumnName="Iso_Track2" />
+          <ScalarProperty Name="Iso_RetrievalReferenceNumber" ColumnName="Iso_RetrievalReferenceNumber" />
+          <ScalarProperty Name="Iso_AuthIdResponse" ColumnName="Iso_AuthIdResponse" />
+          <ScalarProperty Name="Iso_ResponseCode" ColumnName="Iso_ResponseCode" />
+          <ScalarProperty Name="Iso_CardAcceptorTrmlId" ColumnName="Iso_CardAcceptorTrmlId" />
+          <ScalarProperty Name="Iso_CardAcceptorId" ColumnName="Iso_CardAcceptorId" />
+          <ScalarProperty Name="Iso_CardAcceptorNameLocation" ColumnName="Iso_CardAcceptorNameLocation" />
+          <ScalarProperty Name="Iso_TrackI" ColumnName="Iso_TrackI" />
+          <ScalarProperty Name="Iso_AdditionalDataPrivate" ColumnName="Iso_AdditionalDataPrivate" />
+          <ScalarProperty Name="Iso_CurrencyCode" ColumnName="Iso_CurrencyCode" />
+          <ScalarProperty Name="Iso_PINData" ColumnName="Iso_PINData" />
+          <ScalarProperty Name="Iso_SecurityRelatedData" ColumnName="Iso_SecurityRelatedData" />
+          <ScalarProperty Name="Iso_AdditionalAmounts" ColumnName="Iso_AdditionalAmounts" />
+          <ScalarProperty Name="Iso_IntegratedCircuitCard" ColumnName="Iso_IntegratedCircuitCard" />
+          <ScalarProperty Name="Iso_ReservedporNationalUse_57" ColumnName="Iso_ReservedporNationalUse_57" />
+          <ScalarProperty Name="Iso_ReservedporNationalUse_58" ColumnName="Iso_ReservedporNationalUse_58" />
+          <ScalarProperty Name="Iso_PointofServiceData" ColumnName="Iso_PointofServiceData" />
+          <ScalarProperty Name="Iso_NetworkData" ColumnName="Iso_NetworkData" />
+          <ScalarProperty Name="Iso_OriginalDataElements" ColumnName="Iso_OriginalDataElements" />
+          <ScalarProperty Name="Iso_LogStatus" ColumnName="Iso_LogStatus" />
+          <ScalarProperty Name="Iso_LocalDate" ColumnName="Iso_LocalDate" />
+          <ScalarProperty Name="Iso_ResponseLocalDate" ColumnName="Iso_ResponseLocalDate" />
+          <ScalarProperty Name="Iso_ResponseDetails" ColumnName="Iso_ResponseDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DATAFAST_RESPONSE_CODES">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.DATAFAST_RESPONSE_CODES">
+        <MappingFragment StoreEntitySet="DATAFAST_RESPONSE_CODES">
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_CUENTA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.ESTADO_CUENTA">
+        <MappingFragment StoreEntitySet="ESTADO_CUENTA">
+          <ScalarProperty Name="EST_CTA_CODIGO" ColumnName="EST_CTA_CODIGO" />
+          <ScalarProperty Name="EST_CTA_DESCRIPCION" ColumnName="EST_CTA_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.ESTADO_TARJETA">
+        <MappingFragment StoreEntitySet="ESTADO_TARJETA">
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+          <ScalarProperty Name="EST_TAR_DESCRIPCION" ColumnName="EST_TAR_DESCRIPCION" />
+          <ScalarProperty Name="EST_TAR_TIPO" ColumnName="EST_TAR_TIPO" />
+          <ScalarProperty Name="EST_TAR_ISO" ColumnName="EST_TAR_ISO" />
+          <ScalarProperty Name="EST_TAR_ISO_V1" ColumnName="EST_TAR_ISO_V1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOS_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.ESTADOS_TARJETA">
+        <MappingFragment StoreEntitySet="ESTADOS_TARJETA">
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+          <ScalarProperty Name="EST_TAR_CODIGO_PARENT" ColumnName="EST_TAR_CODIGO_PARENT" />
+          <ScalarProperty Name="EST_TAR_CODIGO_ESTADO" ColumnName="EST_TAR_CODIGO_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INPUT_FILE">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.INPUT_FILE">
+        <MappingFragment StoreEntitySet="INPUT_FILE">
+          <ScalarProperty Name="ID_ARCHIVO" ColumnName="ID_ARCHIVO" />
+          <ScalarProperty Name="NOMBRE_ARCHIVO" ColumnName="NOMBRE_ARCHIVO" />
+          <ScalarProperty Name="FECHA_ARCHIVO" ColumnName="FECHA_ARCHIVO" />
+          <ScalarProperty Name="FECHA_ENCRIPCION" ColumnName="FECHA_ENCRIPCION" />
+          <ScalarProperty Name="ENVIO_SFTP_ARCHIVO" ColumnName="ENVIO_SFTP_ARCHIVO" />
+          <ScalarProperty Name="ESTADO_ARCHIVO" ColumnName="ESTADO_ARCHIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSTITUCION">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.INSTITUCION">
+        <MappingFragment StoreEntitySet="INSTITUCION">
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="INST_NOMBRE" ColumnName="INST_NOMBRE" />
+          <ScalarProperty Name="INST_ABA" ColumnName="INST_ABA" />
+          <ScalarProperty Name="INST_PAIS" ColumnName="INST_PAIS" />
+          <ScalarProperty Name="INST_IP" ColumnName="INST_IP" />
+          <ScalarProperty Name="INST_PUERTO" ColumnName="INST_PUERTO" />
+          <ScalarProperty Name="INST_CUPO_MAXIMO_ATM" ColumnName="INST_CUPO_MAXIMO_ATM" />
+          <ScalarProperty Name="INST_CUPO_MAXIMO_POS" ColumnName="INST_CUPO_MAXIMO_POS" />
+          <ScalarProperty Name="INST_ANIO_VALIDEZ_TRJ" ColumnName="INST_ANIO_VALIDEZ_TRJ" />
+          <ScalarProperty Name="INST_ULTIMA_TARJETA" ColumnName="INST_ULTIMA_TARJETA" />
+          <ScalarProperty Name="TEN_CODIGO" ColumnName="TEN_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.LOG">
+        <MappingFragment StoreEntitySet="LOG">
+          <ScalarProperty Name="LOG_CODIGO" ColumnName="LOG_CODIGO" />
+          <ScalarProperty Name="LOG_FECHORA" ColumnName="LOG_FECHORA" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="TER_CODIGO" ColumnName="TER_CODIGO" />
+          <ScalarProperty Name="TAR_ID" ColumnName="TAR_ID" />
+          <ScalarProperty Name="TRA_CODIGO" ColumnName="TRA_CODIGO" />
+          <ScalarProperty Name="LOG_DESCRIPCION" ColumnName="LOG_DESCRIPCION" />
+          <ScalarProperty Name="TAR_EST_ANTERIOR" ColumnName="TAR_EST_ANTERIOR" />
+          <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_ACTUALIZACIONES">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.LOG_ACTUALIZACIONES">
+        <MappingFragment StoreEntitySet="LOG_ACTUALIZACIONES">
+          <ScalarProperty Name="CLI_CODIGO" ColumnName="CLI_CODIGO" />
+          <ScalarProperty Name="CLI_IDENTIFICACION" ColumnName="CLI_IDENTIFICACION" />
+          <ScalarProperty Name="CLI_NOMBRE" ColumnName="CLI_NOMBRE" />
+          <ScalarProperty Name="CTA_NUMERO" ColumnName="CTA_NUMERO" />
+          <ScalarProperty Name="TIP_CTA_CODIGO" ColumnName="TIP_CTA_CODIGO" />
+          <ScalarProperty Name="TAR_CTA_TIPO" ColumnName="TAR_CTA_TIPO" />
+          <ScalarProperty Name="TAR_CTA_ESTADO" ColumnName="TAR_CTA_ESTADO" />
+          <ScalarProperty Name="TAR_ID" ColumnName="TAR_ID" />
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+          <ScalarProperty Name="TIP_TAR_CODIGO" ColumnName="TIP_TAR_CODIGO" />
+          <ScalarProperty Name="TAR_CUPO_DIARIO_ATM" ColumnName="TAR_CUPO_DIARIO_ATM" />
+          <ScalarProperty Name="TAR_CUPO_DIARIO_POS" ColumnName="TAR_CUPO_DIARIO_POS" />
+          <ScalarProperty Name="AGE_DESCRIPCION" ColumnName="AGE_DESCRIPCION" />
+          <ScalarProperty Name="TAR_FECHA_EXPIRACION" ColumnName="TAR_FECHA_EXPIRACION" />
+          <ScalarProperty Name="TRA_CODIGO" ColumnName="TRA_CODIGO" />
+          <ScalarProperty Name="FECHA_LOG" ColumnName="FECHA_LOG" />
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="TER_CODIGO" ColumnName="TER_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGAUDIT">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.LOGAUDIT">
+        <MappingFragment StoreEntitySet="LOGAUDIT">
+          <ScalarProperty Name="LOGCODIGO" ColumnName="LOGCODIGO" />
+          <ScalarProperty Name="USUCODIGO" ColumnName="USUCODIGO" />
+          <ScalarProperty Name="TRACODIGO" ColumnName="TRACODIGO" />
+          <ScalarProperty Name="LOGFECHA" ColumnName="LOGFECHA" />
+          <ScalarProperty Name="LOGTERMINAL" ColumnName="LOGTERMINAL" />
+          <ScalarProperty Name="LOGDESCRIPCION" ColumnName="LOGDESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="MEN_CODIGO" ColumnName="MEN_CODIGO" />
+          <ScalarProperty Name="MEN_NOMBRE" ColumnName="MEN_NOMBRE" />
+          <ScalarProperty Name="MEN_URL" ColumnName="MEN_URL" />
+          <ScalarProperty Name="MEN_ICONO" ColumnName="MEN_ICONO" />
+          <ScalarProperty Name="MEN_TITULO" ColumnName="MEN_TITULO" />
+          <ScalarProperty Name="MEN_PARENT" ColumnName="MEN_PARENT" />
+          <ScalarProperty Name="MEN_PARENT_ID" ColumnName="MEN_PARENT_ID" />
+          <ScalarProperty Name="MEN_ORDINAL" ColumnName="MEN_ORDINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU_PERFIL">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.MENU_PERFIL">
+        <MappingFragment StoreEntitySet="MENU_PERFIL">
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="MEN_CODIGO" ColumnName="MEN_CODIGO" />
+          <ScalarProperty Name="MP_ESTADO" ColumnName="MP_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODELO_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.MODELO_TARJETA">
+        <MappingFragment StoreEntitySet="MODELO_TARJETA">
+          <ScalarProperty Name="MTJ_CODIGO" ColumnName="MTJ_CODIGO" />
+          <ScalarProperty Name="MTJ_DESCRIPCION" ColumnName="MTJ_DESCRIPCION" />
+          <ScalarProperty Name="MTJ_IMAGEN" ColumnName="MTJ_IMAGEN" />
+          <ScalarProperty Name="MTJ_FECHA_CREACION" ColumnName="MTJ_FECHA_CREACION" />
+          <ScalarProperty Name="MTJ_ESTADO" ColumnName="MTJ_ESTADO" />
+          <ScalarProperty Name="MTJ_TIPO" ColumnName="MTJ_TIPO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEN">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.ORDEN">
+        <MappingFragment StoreEntitySet="ORDEN">
+          <ScalarProperty Name="ORD_CODIGO" ColumnName="ORD_CODIGO" />
+          <ScalarProperty Name="ORD_FECHA_CREACION" ColumnName="ORD_FECHA_CREACION" />
+          <ScalarProperty Name="ORD_FECHA_CIERRE" ColumnName="ORD_FECHA_CIERRE" />
+          <ScalarProperty Name="ORD_TOTAL" ColumnName="ORD_TOTAL" />
+          <ScalarProperty Name="ORD_ESTADO" ColumnName="ORD_ESTADO" />
+          <ScalarProperty Name="ORD_TIPO" ColumnName="ORD_TIPO" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERFIL">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.PERFIL">
+        <MappingFragment StoreEntitySet="PERFIL">
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="PER_DESCRIPCION" ColumnName="PER_DESCRIPCION" />
+          <ScalarProperty Name="PER_COMENTARIO" ColumnName="PER_COMENTARIO" />
+          <ScalarProperty Name="PER_JERARQUIA" ColumnName="PER_JERARQUIA" />
+          <ScalarProperty Name="PER_PERMISO" ColumnName="PER_PERMISO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.PROVINCIA">
+        <MappingFragment StoreEntitySet="PROVINCIA">
+          <ScalarProperty Name="PRO_CODIGO" ColumnName="PRO_CODIGO" />
+          <ScalarProperty Name="PRO_DESCRIPCION" ColumnName="PRO_DESCRIPCION" />
+          <ScalarProperty Name="PRO_REGION" ColumnName="PRO_REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUNTOPAGO">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.PUNTOPAGO">
+        <MappingFragment StoreEntitySet="PUNTOPAGO">
+          <ScalarProperty Name="PPACODIGO" ColumnName="PPACODIGO" />
+          <ScalarProperty Name="ENTCODIGO" ColumnName="ENTCODIGO" />
+          <ScalarProperty Name="SUCCODIGO" ColumnName="SUCCODIGO" />
+          <ScalarProperty Name="TCACODIGO" ColumnName="TCACODIGO" />
+          <ScalarProperty Name="PPAUBICACION" ColumnName="PPAUBICACION" />
+          <ScalarProperty Name="PPADEPENDENCIA" ColumnName="PPADEPENDENCIA" />
+          <ScalarProperty Name="PPAESTADO" ColumnName="PPAESTADO" />
+          <ScalarProperty Name="PPAZONA" ColumnName="PPAZONA" />
+          <ScalarProperty Name="PPFECHA_EXPIRACION" ColumnName="PPFECHA_EXPIRACION" />
+          <ScalarProperty Name="PPHORA_EXPIRACION" ColumnName="PPHORA_EXPIRACION" />
+          <ScalarProperty Name="PPHORAF_EXPIRACION" ColumnName="PPHORAF_EXPIRACION" />
+          <ScalarProperty Name="PMAC" ColumnName="PMAC" />
+          <ScalarProperty Name="PDIAS" ColumnName="PDIAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TARJETA">
+        <MappingFragment StoreEntitySet="TARJETA">
+          <ScalarProperty Name="TAR_NUMERO" ColumnName="TAR_NUMERO" />
+          <ScalarProperty Name="TIP_TAR_CODIGO" ColumnName="TIP_TAR_CODIGO" />
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+          <ScalarProperty Name="TAR_FECHA_SOLICITUD" ColumnName="TAR_FECHA_SOLICITUD" />
+          <ScalarProperty Name="TAR_OFFSET" ColumnName="TAR_OFFSET" />
+          <ScalarProperty Name="TAR_CUPO_DIARIO_ATM" ColumnName="TAR_CUPO_DIARIO_ATM" />
+          <ScalarProperty Name="TAR_CUPO_DISP_ATM" ColumnName="TAR_CUPO_DISP_ATM" />
+          <ScalarProperty Name="TAR_CUPO_DISP_POS" ColumnName="TAR_CUPO_DISP_POS" />
+          <ScalarProperty Name="TAR_CUPO_DIARIO_POS" ColumnName="TAR_CUPO_DIARIO_POS" />
+          <ScalarProperty Name="TAR_FECHA_EXPIRACION" ColumnName="TAR_FECHA_EXPIRACION" />
+          <ScalarProperty Name="TAR_FECHA_ULTIMO_MOV" ColumnName="TAR_FECHA_ULTIMO_MOV" />
+          <ScalarProperty Name="TAR_FECHA_ENTREGA" ColumnName="TAR_FECHA_ENTREGA" />
+          <ScalarProperty Name="TAR_FECHA_ACTIVACION" ColumnName="TAR_FECHA_ACTIVACION" />
+          <ScalarProperty Name="TAR_PIN_RETRIES" ColumnName="TAR_PIN_RETRIES" />
+          <ScalarProperty Name="TAR_NOMBRE_IMPRESO" ColumnName="TAR_NOMBRE_IMPRESO" />
+          <ScalarProperty Name="ORD_CODIGO" ColumnName="ORD_CODIGO" />
+          <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+          <ScalarProperty Name="AGE_DESCRIPTION_E" ColumnName="AGE_DESCRIPTION_E" />
+          <ScalarProperty Name="MTJ_TIPO" ColumnName="MTJ_TIPO" />
+          <ScalarProperty Name="MTJ_CODIGO" ColumnName="MTJ_CODIGO" />
+          <ScalarProperty Name="TAR_TIPO_PAGO" ColumnName="TAR_TIPO_PAGO" />
+          <ScalarProperty Name="TAR_TIPO_OP" ColumnName="TAR_TIPO_OP" />
+          <ScalarProperty Name="TAR_OP_SMS" ColumnName="TAR_OP_SMS" />
+          <ScalarProperty Name="TAR_TRANS_FREC" ColumnName="TAR_TRANS_FREC" />
+          <ScalarProperty Name="TAR_TRANS_CONTA" ColumnName="TAR_TRANS_CONTA" />
+          <ScalarProperty Name="TAR_OFFSET_FIRST" ColumnName="TAR_OFFSET_FIRST" />
+          <ScalarProperty Name="TAR_CELULAR" ColumnName="TAR_CELULAR" />
+          <ScalarProperty Name="TAR_ValPIN_HSM_Flag" ColumnName="TAR_ValPIN_HSM_Flag" />
+          <ScalarProperty Name="TAR_FECHA_ULT_CAMBIOPIN" ColumnName="TAR_FECHA_ULT_CAMBIOPIN" />
+          <ScalarProperty Name="TAR_DIAS_VAL_PIN" ColumnName="TAR_DIAS_VAL_PIN" />
+          <ScalarProperty Name="TAR_CVV" ColumnName="TAR_CVV" />
+          <ScalarProperty Name="TAR_EMV_SEC" ColumnName="TAR_EMV_SEC" />
+          <ScalarProperty Name="TAR_ID" ColumnName="TAR_ID" />
+          <ScalarProperty Name="TAR_HASH" ColumnName="TAR_HASH" />
+          <ScalarProperty Name="TAR_PROFILE" ColumnName="TAR_PROFILE" />
+          <ScalarProperty Name="TAR_FECHA_ULTIMO_RETIRO" ColumnName="TAR_FECHA_ULTIMO_RETIRO" />
+          <ScalarProperty Name="TAR_NUMERO_E" ColumnName="TAR_NUMERO_E" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARJETA_CUENTA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TARJETA_CUENTA">
+        <MappingFragment StoreEntitySet="TARJETA_CUENTA">
+          <ScalarProperty Name="CLI_CODIGO" ColumnName="CLI_CODIGO" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="CTA_NUMERO" ColumnName="CTA_NUMERO" />
+          <ScalarProperty Name="TAR_CTA_TIPO" ColumnName="TAR_CTA_TIPO" />
+          <ScalarProperty Name="TAR_CTA_ESTADO" ColumnName="TAR_CTA_ESTADO" />
+          <ScalarProperty Name="TAR_CTA_OBSERVACIONES" ColumnName="TAR_CTA_OBSERVACIONES" />
+          <ScalarProperty Name="TIP_CTA_CODIGO" ColumnName="TIP_CTA_CODIGO" />
+          <ScalarProperty Name="TAR_ID" ColumnName="TAR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TARJETA_PROFILE">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TARJETA_PROFILE">
+        <MappingFragment StoreEntitySet="TARJETA_PROFILE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IMK_AC_SPEC" ColumnName="IMK_AC_SPEC" />
+          <ScalarProperty Name="CVK_SPEC" ColumnName="CVK_SPEC" />
+          <ScalarProperty Name="VALIDAR_FECHA_T2" ColumnName="VALIDAR_FECHA_T2" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ICVK_SPEC" ColumnName="ICVK_SPEC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_CUENTA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TIPO_CUENTA">
+        <MappingFragment StoreEntitySet="TIPO_CUENTA">
+          <ScalarProperty Name="TIP_CTA_CODIGO" ColumnName="TIP_CTA_CODIGO" />
+          <ScalarProperty Name="TIP_CTA_DESCRIPCION" ColumnName="TIP_CTA_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TIPO_TARJETA">
+        <MappingFragment StoreEntitySet="TIPO_TARJETA">
+          <ScalarProperty Name="TIP_TAR_CODIGO" ColumnName="TIP_TAR_CODIGO" />
+          <ScalarProperty Name="TIP_TAR_DESCRIPCION" ColumnName="TIP_TAR_DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOCANAL">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TIPOCANAL">
+        <MappingFragment StoreEntitySet="TIPOCANAL">
+          <ScalarProperty Name="TCACODIGO" ColumnName="TCACODIGO" />
+          <ScalarProperty Name="TCADESCRIPCION" ColumnName="TCADESCRIPCION" />
+          <ScalarProperty Name="TCAESTADO" ColumnName="TCAESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOENTIDAD">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TIPOENTIDAD">
+        <MappingFragment StoreEntitySet="TIPOENTIDAD">
+          <ScalarProperty Name="TENCODIGO" ColumnName="TENCODIGO" />
+          <ScalarProperty Name="TENDESCRIPCION" ColumnName="TENDESCRIPCION" />
+          <ScalarProperty Name="TENESTADO" ColumnName="TENESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANSACCION">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.TRANSACCION">
+        <MappingFragment StoreEntitySet="TRANSACCION">
+          <ScalarProperty Name="TRA_CODIGO" ColumnName="TRA_CODIGO" />
+          <ScalarProperty Name="TRA_DESCRIPCION" ColumnName="TRA_DESCRIPCION" />
+          <ScalarProperty Name="TRA_SELECCION" ColumnName="TRA_SELECCION" />
+          <ScalarProperty Name="EST_TAR_CODIGO" ColumnName="EST_TAR_CODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="USU_CODIGO" ColumnName="USU_CODIGO" />
+          <ScalarProperty Name="USU_ALIAS" ColumnName="USU_ALIAS" />
+          <ScalarProperty Name="USU_NOMBRE" ColumnName="USU_NOMBRE" />
+          <ScalarProperty Name="USU_CEDULA" ColumnName="USU_CEDULA" />
+          <ScalarProperty Name="USU_CLAVE" ColumnName="USU_CLAVE" />
+          <ScalarProperty Name="USU_ESTADO" ColumnName="USU_ESTADO" />
+          <ScalarProperty Name="USU_FECAPER" ColumnName="USU_FECAPER" />
+          <ScalarProperty Name="USU_FEC_CAMB_CLAVE" ColumnName="USU_FEC_CAMB_CLAVE" />
+          <ScalarProperty Name="PER_CODIGO" ColumnName="PER_CODIGO" />
+          <ScalarProperty Name="INST_CODIGO" ColumnName="INST_CODIGO" />
+          <ScalarProperty Name="AGE_CODIGO" ColumnName="AGE_CODIGO" />
+          <ScalarProperty Name="USU_CLAVE_ACTUALIZACION" ColumnName="USU_CLAVE_ACTUALIZACION" />
+          <ScalarProperty Name="USU_PERMISO" ColumnName="USU_PERMISO" />
+          <ScalarProperty Name="USU_FLAG_PIN" ColumnName="USU_FLAG_PIN" />
+          <ScalarProperty Name="SALT" ColumnName="SALT" />
+          <ScalarProperty Name="SHA_PWD" ColumnName="SHA_PWD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO_PPAGO">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.USUARIO_PPAGO">
+        <MappingFragment StoreEntitySet="USUARIO_PPAGO">
+          <ScalarProperty Name="USUCODIGO" ColumnName="USUCODIGO" />
+          <ScalarProperty Name="ENTCODIGO" ColumnName="ENTCODIGO" />
+          <ScalarProperty Name="SUCCODIGO" ColumnName="SUCCODIGO" />
+          <ScalarProperty Name="PPACODIGO" ColumnName="PPACODIGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_TARJETA">
+      <EntityTypeMapping TypeName="CardMaster29OctubreMigrModel.SOLICITUD_TARJETA">
+        <MappingFragment StoreEntitySet="SOLICITUD_TARJETA">
+          <ScalarProperty Name="CLI_IDENTIFICACION" ColumnName="CLI_IDENTIFICACION" />
+          <ScalarProperty Name="CTA_NUMERO" ColumnName="CTA_NUMERO" />
+          <ScalarProperty Name="EST_SOLICITUD" ColumnName="EST_SOLICITUD" />
+          <ScalarProperty Name="DES_SOLICITUD" ColumnName="DES_SOLICITUD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

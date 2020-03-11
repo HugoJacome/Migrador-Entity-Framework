@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="phiAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Acquirers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AzureAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_Acquirers" FromRole="Acquirers" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="Activities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Activities" FromRole="Activities" ToRole="Logs" />
+    <NavigationProperty Name="Entities" Relationship="Self.EntitiesActivities" FromRole="Activities" ToRole="Entities" />
+  </EntityType>
+  <EntityType Name="AspNetRoleClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoleClaims" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NormalizedName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRoleClaims" Relationship="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId" FromRole="AspNetRoles" ToRole="AspNetRoleClaims" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderDisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="450" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InstitutionId" Type="Int64" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="ConcurrencyStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEnd" Type="DateTimeOffset" Precision="7" />
+    <Property Name="NormalizedEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="NormalizedUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UserFullName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LastSignIn" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="AzureId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="BranchId" Type="Int64" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_AspNetUserClaims_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_AspNetUserLogins_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="Institutions" Relationship="Self.FK_AspNetUsers_Institutions_InstitutionId" FromRole="AspNetUsers" ToRole="Institutions" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_AspNetUsers" FromRole="AspNetUsers" ToRole="Logs" />
+    <NavigationProperty Name="Groups" Relationship="Self.ApplicationUserGroup" FromRole="AspNetUsers" ToRole="Groups" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="AuditLog2">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Institution" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResourceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResourceType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResourceId" Type="Int64" Nullable="false" />
+    <Property Name="EntityType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EntityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Result" Type="Int32" Nullable="false" />
+    <Property Name="BranchId" Type="Int64" />
+    <Property Name="IP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AuditLogs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Entity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Activity" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="User" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Institution" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Result" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Authorizers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AzureAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transactions_Authorizers1" FromRole="Authorizers" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitutionId" Type="Int64" Nullable="false" />
+    <Property Name="State" Type="Boolean" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CoreIdentifier" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Identifiers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Institutions" Relationship="Self.FK_Agencies_Institutions_InstitutionId" FromRole="Branches" ToRole="Institutions" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Agencies" FromRole="Branches" ToRole="Logs" />
+  </EntityType>
+  <EntityType Name="CardModules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ResourceId" Type="Int64" Nullable="false" />
+    <Property Name="SearchUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DBConnectionString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CVVUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PANHashTable" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DebitUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Bioserver" Type="Boolean" />
+    <Property Name="Contracts" Type="Boolean" />
+    <Property Name="EntityRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BioServerUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Associates" Type="Boolean" />
+    <Property Name="MoreThanOneCard" Type="Boolean" />
+    <Property Name="DBBackUpConnectionString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CVVConfig" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DebitSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DebitVersion" Type="Int32" />
+    <Property Name="Nominadas" Type="Boolean" />
+    <Property Name="Innominadas" Type="Boolean" />
+    <Property Name="Config" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Entities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Entities" FromRole="Entities" ToRole="Logs" />
+    <NavigationProperty Name="Activities" Relationship="Self.EntitiesActivities" FromRole="Entities" ToRole="Activities" />
+  </EntityType>
+  <EntityType Name="EntityActivities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EntityVisible" Type="Boolean" Nullable="false" />
+    <Property Name="EntityDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EntityModule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActivityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ActivityVisible" Type="Boolean" Nullable="false" />
+    <Property Name="ActivityDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsAuditable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GroupPermission">
+    <Key>
+      <PropertyRef Name="GroupPermissionId" />
+    </Key>
+    <Property Name="GroupPermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitutionId" Type="Int64" Nullable="false" />
+    <Property Name="GroupId" Type="Int64" Nullable="false" />
+    <Property Name="ResourceId" Type="Int64" Nullable="false" />
+    <Property Name="Roles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupId" />
+    </Key>
+    <Property Name="GroupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BaseResource" Type="Int64" Nullable="false" />
+    <Property Name="InstitutionId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.ApplicationUserGroup" FromRole="Groups" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="Institutions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Domain" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdResource" Type="Int64" Nullable="false" />
+    <Property Name="IAMResourceId" Type="Int64" Nullable="false" />
+    <Property Name="CMResourceId" Type="Int64" />
+    <Property Name="TGResourceId" Type="Int64" />
+    <Property Name="ReportResourceId" Type="Int64" />
+    <Property Name="ClientID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Authority" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AuthType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ServerID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Secret" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ServerScope" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EntityRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BranchIdentifiers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_Institutions_InstitutionId" FromRole="Institutions" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Branches" Relationship="Self.FK_Agencies_Institutions_InstitutionId" FromRole="Institutions" ToRole="Branches" />
+    <NavigationProperty Name="Resources" Relationship="Self.FK_Institutions_Resource" FromRole="Institutions" ToRole="Resources" />
+    <NavigationProperty Name="Logs" Relationship="Self.FK_Logs_Institutions" FromRole="Institutions" ToRole="Logs" />
+  </EntityType>
+  <EntityType Name="Resources">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="ResourceType" Type="Int64" Nullable="false" />
+    <Property Name="EntityRef" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Institutions" Relationship="Self.FK_Institutions_Resource" FromRole="Resources" ToRole="Institutions" />
+    <NavigationProperty Name="Resources1" Relationship="Self.FK__Resources__Paren__05D8E0BE" FromRole="Resources" ToRole="Resources1" />
+    <NavigationProperty Name="Resources2" Relationship="Self.FK__Resources__Paren__05D8E0BE" FromRole="Resources1" ToRole="Resources" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorizerId" Type="Int64" Nullable="false" />
+    <Property Name="AcquirerId" Type="Int64" Nullable="false" />
+    <Property Name="ATM_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Process_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Acquirers" Relationship="Self.FK_Transactions_Acquirers" FromRole="Transactions" ToRole="Acquirers" />
+    <NavigationProperty Name="Authorizers" Relationship="Self.FK_Transactions_Authorizers1" FromRole="Transactions" ToRole="Authorizers" />
+  </EntityType>
+  <EntityType Name="ApiKeys">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="InstId" />
+      <PropertyRef Name="Creation" />
+      <PropertyRef Name="Expiration" />
+      <PropertyRef Name="Hash" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InstId" Type="Int64" Nullable="false" />
+    <Property Name="Creation" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Expiration" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Hash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityId" Type="Int32" />
+    <Property Name="EntityId" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="InstitutionId" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AgencyId" Type="Int32" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Logs_Activities" FromRole="Logs" ToRole="Activities" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Logs_AspNetUsers" FromRole="Logs" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Branches" Relationship="Self.FK_Logs_Agencies" FromRole="Logs" ToRole="Branches" />
+    <NavigationProperty Name="Entities" Relationship="Self.FK_Logs_Entities" FromRole="Logs" ToRole="Entities" />
+    <NavigationProperty Name="Institutions" Relationship="Self.FK_Logs_Institutions" FromRole="Logs" ToRole="Institutions" />
+  </EntityType>
+  <Association Name="FK_Transactions_Acquirers">
+    <End Role="Acquirers" Type="Self.Acquirers" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acquirers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="AcquirerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Activities">
+    <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Activities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="ActivityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetRoleClaims" Type="Self.AspNetRoleClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetRoleClaims">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Institutions_InstitutionId">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transactions_Authorizers1">
+    <End Role="Authorizers" Type="Self.Authorizers" Multiplicity="1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authorizers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="AuthorizerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agencies_Institutions_InstitutionId">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
+    <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Agencies">
+    <End Role="Branches" Type="Self.Branches" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="AgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Entities">
+    <End Role="Entities" Type="Self.Entities" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="EntityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Institutions_Resource">
+    <End Role="Resources" Type="Self.Resources" Multiplicity="1" />
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Institutions">
+        <PropertyRef Name="IdResource" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Logs_Institutions">
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="0..1" />
+    <End Role="Logs" Type="Self.Logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institutions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Logs">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Resources__Paren__05D8E0BE">
+    <End Role="Resources" Type="Self.Resources" Multiplicity="0..1" />
+    <End Role="Resources1" Type="Self.Resources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Resources">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Resources1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationUserGroup">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <Association Name="EntitiesActivities">
+    <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+    <End Role="Entities" Type="Self.Entities" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="phiAdminEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+    <EntitySet Name="Acquirers" EntityType="Self.Acquirers" />
+    <EntitySet Name="Activities" EntityType="Self.Activities" />
+    <EntitySet Name="AspNetRoleClaims" EntityType="Self.AspNetRoleClaims" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="AuditLog2" EntityType="Self.AuditLog2" />
+    <EntitySet Name="AuditLogs" EntityType="Self.AuditLogs" />
+    <EntitySet Name="Authorizers" EntityType="Self.Authorizers" />
+    <EntitySet Name="Branches" EntityType="Self.Branches" />
+    <EntitySet Name="CardModules" EntityType="Self.CardModules" />
+    <EntitySet Name="Entities" EntityType="Self.Entities" />
+    <EntitySet Name="EntityActivities" EntityType="Self.EntityActivities" />
+    <EntitySet Name="GroupPermission" EntityType="Self.GroupPermission" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" />
+    <EntitySet Name="Institutions" EntityType="Self.Institutions" />
+    <EntitySet Name="Resources" EntityType="Self.Resources" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" />
+    <EntitySet Name="ApiKeys" EntityType="Self.ApiKeys" />
+    <EntitySet Name="Logs" EntityType="Self.Logs" />
+    <AssociationSet Name="FK_Transactions_Acquirers" Association="Self.FK_Transactions_Acquirers">
+      <End Role="Acquirers" EntitySet="Acquirers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Activities" Association="Self.FK_Logs_Activities">
+      <End Role="Activities" EntitySet="Activities" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetRoleClaims_AspNetRoles_RoleId" Association="Self.FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetRoleClaims" EntitySet="AspNetRoleClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers_UserId" Association="Self.FK_AspNetUserClaims_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers_UserId" Association="Self.FK_AspNetUserLogins_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Institutions_InstitutionId" Association="Self.FK_AspNetUsers_Institutions_InstitutionId">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_AspNetUsers" Association="Self.FK_Logs_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transactions_Authorizers1" Association="Self.FK_Transactions_Authorizers1">
+      <End Role="Authorizers" EntitySet="Authorizers" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agencies_Institutions_InstitutionId" Association="Self.FK_Agencies_Institutions_InstitutionId">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Agencies" Association="Self.FK_Logs_Agencies">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Entities" Association="Self.FK_Logs_Entities">
+      <End Role="Entities" EntitySet="Entities" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Institutions_Resource" Association="Self.FK_Institutions_Resource">
+      <End Role="Resources" EntitySet="Resources" />
+      <End Role="Institutions" EntitySet="Institutions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Logs_Institutions" Association="Self.FK_Logs_Institutions">
+      <End Role="Institutions" EntitySet="Institutions" />
+      <End Role="Logs" EntitySet="Logs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Resources__Paren__05D8E0BE" Association="Self.FK__Resources__Paren__05D8E0BE">
+      <End Role="Resources" EntitySet="Resources" />
+      <End Role="Resources1" EntitySet="Resources" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationUserGroup" Association="Self.ApplicationUserGroup">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Groups" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="EntitiesActivities" Association="Self.EntitiesActivities">
+      <End Role="Activities" EntitySet="Activities" />
+      <End Role="Entities" EntitySet="Entities" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

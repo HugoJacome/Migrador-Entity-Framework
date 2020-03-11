@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CardDB_MRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BINs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BIN" Type="nchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardBatches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="InitialSequential" Type="int" Nullable="false" />
+          <Property Name="Size" Type="int" Nullable="false" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardHolder" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Identification" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PrintedName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Quota" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CardProfile" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DeliveryAgency" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileId" Type="int" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="BatchId" Type="int" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="LastMovDate" Type="datetime" />
+          <Property Name="EmissionDate" Type="datetime" />
+          <Property Name="PINLastChangeDate" Type="datetime" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="CashQuota" Type="money" />
+          <Property Name="PurchaseQuota" Type="money" />
+          <Property Name="OFFSET" Type="varchar" MaxLength="4" />
+          <Property Name="Sequential" Type="varchar" MaxLength="19" />
+          <Property Name="PINAttempts" Type="int" />
+          <Property Name="ATC_EMV" Type="int" />
+          <Property Name="PrintedName" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryBranchId" Type="int" />
+          <Property Name="ModelId" Type="int" />
+          <Property Name="MaskedNumber" Type="varchar" MaxLength="19" />
+          <Property Name="HASH" Type="varchar" MaxLength="256" />
+          <Property Name="Seed" Type="varchar" MaxLength="50" />
+          <Property Name="ChangePIN" Type="bit" />
+          <Property Name="LastCashDate" Type="datetime2" Precision="7" />
+          <Property Name="LastPurchaseDate" Type="datetime2" Precision="7" />
+          <Property Name="CardDeliveryDate" Type="datetime2" Precision="7" />
+          <Property Name="CardActivationDate" Type="datetime2" Precision="7" />
+          <Property Name="CashTransPerDay" Type="int" />
+          <Property Name="RequestBranchId" Type="int" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="20" />
+          <Property Name="LastMaintenanceFeeChargeDate" Type="datetime" />
+          <Property Name="LastTransactions" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CardsAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CardId" Type="int" Nullable="false" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsPrincipal" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identification" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="AgencyId" Type="int" Nullable="false" />
+          <Property Name="IdentityType" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CardDB_MR.dbo.DenariusTerminals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DenariusTerminals">
+          <Key>
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="TerminalId" Type="nvarchar" MaxLength="12" />
+          <Property Name="Channel" Type="int" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfileId" Type="int" />
+          <Property Name="PrefixId" Type="int" />
+          <Property Name="State" Type="int" />
+          <Property Name="InitialSequential" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="NotifyDate" Type="datetime" />
+          <Property Name="ClosingDate" Type="datetime" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="AutoGeneration" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrdersTags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TagId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prefixes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BINId" Type="int" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="6" />
+          <Property Name="Sequential" Type="int" />
+          <Property Name="FPEInfo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BINId" Type="int" Nullable="false" />
+          <Property Name="IMK_AC_SPEC" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CVK_SPEC" Type="nvarchar" MaxLength="100" />
+          <Property Name="PVK_SPEC" Type="nvarchar" MaxLength="100" />
+          <Property Name="ATMDailyLimit" Type="money" Nullable="false" />
+          <Property Name="CardValidity" Type="int" Nullable="false" />
+          <Property Name="PINValidity" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="ProviderFileNameFormat" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProviderHeaderFormat" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProviderRecordFormat" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ProviderFooterFormat" Type="nvarchar" MaxLength="200" />
+          <Property Name="PurchaseDailyLimit" Type="money" />
+          <Property Name="OrderType" Type="int" />
+          <Property Name="InputFilePerBranch" Type="bit" />
+          <Property Name="MaxCashTransPerDay" Type="int" />
+          <Property Name="CashLimit" Type="money" />
+          <Property Name="MaintenanceFee" Type="money" />
+          <Property Name="CVK2_SPEC" Type="nvarchar" MaxLength="100" />
+          <Property Name="Config" Type="nvarchar(max)" />
+          <Property Name="EnvelopeFormat" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogikardURL" Type="nvarchar(max)" />
+          <Property Name="LogikardUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogikardPassword" Type="nvarchar(max)" />
+          <Property Name="LogikardPgpKey" Type="varbinary(max)" />
+          <Property Name="LogikardPgpKeyFileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LogikardPgpKeyExpDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Tmp_Profi__BINId__793DFFAF">
+          <End Role="BINs" Type="Self.BINs" Multiplicity="1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BINs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="BINId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tmp_Profi__Provi__7A3223E8">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards1_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards1_Profiles1">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsAccounts1_Cards1">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CardsAccounts" Type="Self.CardsAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CardsAccounts">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersTags_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrdersTags" Type="Self.OrdersTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersTags">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersTags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="OrdersTags" Type="Self.OrdersTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersTags">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prefixes_Bins">
+          <End Role="BINs" Type="Self.BINs" Multiplicity="0..1" />
+          <End Role="Prefixes" Type="Self.Prefixes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BINs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prefixes">
+              <PropertyRef Name="BINId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CardDB_MRModelStoreContainer">
+          <EntitySet Name="BINs" EntityType="Self.BINs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardBatches" EntityType="Self.CardBatches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardRequests" EntityType="Self.CardRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardsAccounts" EntityType="Self.CardsAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdersTags" EntityType="Self.OrdersTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prefixes" EntityType="Self.Prefixes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DenariusTerminals" EntityType="Self.DenariusTerminals" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DenariusTerminals].[TerminalId] AS [TerminalId], 
+    [DenariusTerminals].[Channel] AS [Channel], 
+    [DenariusTerminals].[userName] AS [userName], 
+    [DenariusTerminals].[priority] AS [priority]
+    FROM [dbo].[DenariusTerminals] AS [DenariusTerminals]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Tmp_Profi__BINId__793DFFAF" Association="Self.FK__Tmp_Profi__BINId__793DFFAF">
+            <End Role="BINs" EntitySet="BINs" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tmp_Profi__Provi__7A3223E8" Association="Self.FK__Tmp_Profi__Provi__7A3223E8">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards1_Orders" Association="Self.FK_Cards1_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards1_Profiles1" Association="Self.FK_Cards1_Profiles1">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsAccounts1_Cards1" Association="Self.FK_CardsAccounts1_Cards1">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsAccounts" EntitySet="CardsAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersTags_Orders" Association="Self.FK_OrdersTags_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrdersTags" EntitySet="OrdersTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersTags_Tags" Association="Self.FK_OrdersTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="OrdersTags" EntitySet="OrdersTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prefixes_Bins" Association="Self.FK_Prefixes_Bins">
+            <End Role="BINs" EntitySet="BINs" />
+            <End Role="Prefixes" EntitySet="Prefixes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CardDB_MRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BINs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BIN" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK__Tmp_Profi__BINId__793DFFAF" FromRole="BINs" ToRole="Profiles" />
+          <NavigationProperty Name="Prefixes" Relationship="Self.FK_Prefixes_Bins" FromRole="BINs" ToRole="Prefixes" />
+        </EntityType>
+        <EntityType Name="CardBatches">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="InitialSequential" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Int32" Nullable="false" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CardRequests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardHolder" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identification" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrintedName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quota" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CardProfile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveryAgency" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="BatchId" Type="Int32" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastMovDate" Type="DateTime" Precision="3" />
+          <Property Name="EmissionDate" Type="DateTime" Precision="3" />
+          <Property Name="PINLastChangeDate" Type="DateTime" Precision="3" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="CashQuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PurchaseQuota" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OFFSET" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Sequential" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="PINAttempts" Type="Int32" />
+          <Property Name="ATC_EMV" Type="Int32" />
+          <Property Name="PrintedName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryBranchId" Type="Int32" />
+          <Property Name="ModelId" Type="Int32" />
+          <Property Name="MaskedNumber" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="HASH" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Seed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChangePIN" Type="Boolean" />
+          <Property Name="LastCashDate" Type="DateTime" Precision="7" />
+          <Property Name="LastPurchaseDate" Type="DateTime" Precision="7" />
+          <Property Name="CardDeliveryDate" Type="DateTime" Precision="7" />
+          <Property Name="CardActivationDate" Type="DateTime" Precision="7" />
+          <Property Name="CashTransPerDay" Type="Int32" />
+          <Property Name="RequestBranchId" Type="Int32" />
+          <Property Name="CardNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LastMaintenanceFeeChargeDate" Type="DateTime" Precision="3" />
+          <Property Name="LastTransactions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Cards1_Orders" FromRole="Cards" ToRole="Orders" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK_Cards1_Profiles1" FromRole="Cards" ToRole="Profiles" />
+          <NavigationProperty Name="CardsAccounts" Relationship="Self.FK_CardsAccounts1_Cards1" FromRole="Cards" ToRole="CardsAccounts" />
+        </EntityType>
+        <EntityType Name="CardsAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CardId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsPrincipal" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_CardsAccounts1_Cards1" FromRole="CardsAccounts" ToRole="Cards" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgencyId" Type="Int32" Nullable="false" />
+          <Property Name="IdentityType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfileId" Type="Int32" />
+          <Property Name="PrefixId" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="InitialSequential" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ClosingDate" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AutoGeneration" Type="Boolean" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards1_Orders" FromRole="Orders" ToRole="Cards" />
+          <NavigationProperty Name="OrdersTags" Relationship="Self.FK_OrdersTags_Orders" FromRole="Orders" ToRole="OrdersTags" />
+        </EntityType>
+        <EntityType Name="OrdersTags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrdersTags_Orders" FromRole="OrdersTags" ToRole="Orders" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_OrdersTags_Tags" FromRole="OrdersTags" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="Prefixes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BINId" Type="Int32" />
+          <Property Name="Prefix" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Sequential" Type="Int32" />
+          <Property Name="FPEInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BINs" Relationship="Self.FK_Prefixes_Bins" FromRole="Prefixes" ToRole="BINs" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BINId" Type="Int32" Nullable="false" />
+          <Property Name="IMK_AC_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CVK_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PVK_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ATMDailyLimit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CardValidity" Type="Int32" Nullable="false" />
+          <Property Name="PINValidity" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderFileNameFormat" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderHeaderFormat" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderRecordFormat" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderFooterFormat" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseDailyLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="InputFilePerBranch" Type="Boolean" />
+          <Property Name="MaxCashTransPerDay" Type="Int32" />
+          <Property Name="CashLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaintenanceFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CVK2_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Config" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnvelopeFormat" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BINs" Relationship="Self.FK__Tmp_Profi__BINId__793DFFAF" FromRole="Profiles" ToRole="BINs" />
+          <NavigationProperty Name="Cards" Relationship="Self.FK_Cards1_Profiles1" FromRole="Profiles" ToRole="Cards" />
+          <NavigationProperty Name="Providers" Relationship="Self.FK__Tmp_Profi__Provi__7A3223E8" FromRole="Profiles" ToRole="Providers" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogikardURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogikardUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogikardPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LogikardPgpKey" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LogikardPgpKeyFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LogikardPgpKeyExpDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FK__Tmp_Profi__Provi__7A3223E8" FromRole="Providers" ToRole="Profiles" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrdersTags" Relationship="Self.FK_OrdersTags_Tags" FromRole="Tags" ToRole="OrdersTags" />
+        </EntityType>
+        <EntityType Name="DenariusTerminals">
+          <Key>
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="TerminalId" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Channel" Type="Int32" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="priority" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Tmp_Profi__BINId__793DFFAF">
+          <End Role="BINs" Type="Self.BINs" Multiplicity="1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BINs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="BINId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prefixes_Bins">
+          <End Role="BINs" Type="Self.BINs" Multiplicity="0..1" />
+          <End Role="Prefixes" Type="Self.Prefixes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BINs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prefixes">
+              <PropertyRef Name="BINId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards1_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cards1_Profiles1">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
+          <End Role="Cards" Type="Self.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="ProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CardsAccounts1_Cards1">
+          <End Role="Cards" Type="Self.Cards" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CardsAccounts" Type="Self.CardsAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CardsAccounts">
+              <PropertyRef Name="CardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersTags_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrdersTags" Type="Self.OrdersTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersTags">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrdersTags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="OrdersTags" Type="Self.OrdersTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdersTags">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tmp_Profi__Provi__7A3223E8">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CardDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BINs" EntityType="Self.BINs" />
+          <EntitySet Name="CardBatches" EntityType="Self.CardBatches" />
+          <EntitySet Name="CardRequests" EntityType="Self.CardRequests" />
+          <EntitySet Name="Cards" EntityType="Self.Cards" />
+          <EntitySet Name="CardsAccounts" EntityType="Self.CardsAccounts" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="OrdersTags" EntityType="Self.OrdersTags" />
+          <EntitySet Name="Prefixes" EntityType="Self.Prefixes" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="DenariusTerminals" EntityType="Self.DenariusTerminals" />
+          <AssociationSet Name="FK__Tmp_Profi__BINId__793DFFAF" Association="Self.FK__Tmp_Profi__BINId__793DFFAF">
+            <End Role="BINs" EntitySet="BINs" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prefixes_Bins" Association="Self.FK_Prefixes_Bins">
+            <End Role="BINs" EntitySet="BINs" />
+            <End Role="Prefixes" EntitySet="Prefixes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards1_Orders" Association="Self.FK_Cards1_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cards1_Profiles1" Association="Self.FK_Cards1_Profiles1">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CardsAccounts1_Cards1" Association="Self.FK_CardsAccounts1_Cards1">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="CardsAccounts" EntitySet="CardsAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersTags_Orders" Association="Self.FK_OrdersTags_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrdersTags" EntitySet="OrdersTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrdersTags_Tags" Association="Self.FK_OrdersTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="OrdersTags" EntitySet="OrdersTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tmp_Profi__Provi__7A3223E8" Association="Self.FK__Tmp_Profi__Provi__7A3223E8">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CardDB_MRModelStoreContainer" CdmEntityContainer="CardDBEntities">
+          <EntitySetMapping Name="BINs">
+            <EntityTypeMapping TypeName="CardDB_MRModel.BINs">
+              <MappingFragment StoreEntitySet="BINs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BIN" ColumnName="BIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardBatches">
+            <EntityTypeMapping TypeName="CardDB_MRModel.CardBatches">
+              <MappingFragment StoreEntitySet="CardBatches">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="InitialSequential" ColumnName="InitialSequential" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardRequests">
+            <EntityTypeMapping TypeName="CardDB_MRModel.CardRequests">
+              <MappingFragment StoreEntitySet="CardRequests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="PrintedName" ColumnName="PrintedName" />
+                <ScalarProperty Name="Quota" ColumnName="Quota" />
+                <ScalarProperty Name="CardProfile" ColumnName="CardProfile" />
+                <ScalarProperty Name="DeliveryAgency" ColumnName="DeliveryAgency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Cards">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="LastMovDate" ColumnName="LastMovDate" />
+                <ScalarProperty Name="EmissionDate" ColumnName="EmissionDate" />
+                <ScalarProperty Name="PINLastChangeDate" ColumnName="PINLastChangeDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CashQuota" ColumnName="CashQuota" />
+                <ScalarProperty Name="PurchaseQuota" ColumnName="PurchaseQuota" />
+                <ScalarProperty Name="OFFSET" ColumnName="OFFSET" />
+                <ScalarProperty Name="Sequential" ColumnName="Sequential" />
+                <ScalarProperty Name="PINAttempts" ColumnName="PINAttempts" />
+                <ScalarProperty Name="ATC_EMV" ColumnName="ATC_EMV" />
+                <ScalarProperty Name="PrintedName" ColumnName="PrintedName" />
+                <ScalarProperty Name="DeliveryBranchId" ColumnName="DeliveryBranchId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+                <ScalarProperty Name="MaskedNumber" ColumnName="MaskedNumber" />
+                <ScalarProperty Name="HASH" ColumnName="HASH" />
+                <ScalarProperty Name="Seed" ColumnName="Seed" />
+                <ScalarProperty Name="ChangePIN" ColumnName="ChangePIN" />
+                <ScalarProperty Name="LastCashDate" ColumnName="LastCashDate" />
+                <ScalarProperty Name="LastPurchaseDate" ColumnName="LastPurchaseDate" />
+                <ScalarProperty Name="CardDeliveryDate" ColumnName="CardDeliveryDate" />
+                <ScalarProperty Name="CardActivationDate" ColumnName="CardActivationDate" />
+                <ScalarProperty Name="CashTransPerDay" ColumnName="CashTransPerDay" />
+                <ScalarProperty Name="RequestBranchId" ColumnName="RequestBranchId" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="LastMaintenanceFeeChargeDate" ColumnName="LastMaintenanceFeeChargeDate" />
+                <ScalarProperty Name="LastTransactions" ColumnName="LastTransactions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardsAccounts">
+            <EntityTypeMapping TypeName="CardDB_MRModel.CardsAccounts">
+              <MappingFragment StoreEntitySet="CardsAccounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="IsPrincipal" ColumnName="IsPrincipal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Identification" ColumnName="Identification" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AgencyId" ColumnName="AgencyId" />
+                <ScalarProperty Name="IdentityType" ColumnName="IdentityType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="PrefixId" ColumnName="PrefixId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="InitialSequential" ColumnName="InitialSequential" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="NotifyDate" ColumnName="NotifyDate" />
+                <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AutoGeneration" ColumnName="AutoGeneration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersTags">
+            <EntityTypeMapping TypeName="CardDB_MRModel.OrdersTags">
+              <MappingFragment StoreEntitySet="OrdersTags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prefixes">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Prefixes">
+              <MappingFragment StoreEntitySet="Prefixes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BINId" ColumnName="BINId" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Sequential" ColumnName="Sequential" />
+                <ScalarProperty Name="FPEInfo" ColumnName="FPEInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Profiles">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BINId" ColumnName="BINId" />
+                <ScalarProperty Name="IMK_AC_SPEC" ColumnName="IMK_AC_SPEC" />
+                <ScalarProperty Name="CVK_SPEC" ColumnName="CVK_SPEC" />
+                <ScalarProperty Name="PVK_SPEC" ColumnName="PVK_SPEC" />
+                <ScalarProperty Name="ATMDailyLimit" ColumnName="ATMDailyLimit" />
+                <ScalarProperty Name="CardValidity" ColumnName="CardValidity" />
+                <ScalarProperty Name="PINValidity" ColumnName="PINValidity" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="ProviderFileNameFormat" ColumnName="ProviderFileNameFormat" />
+                <ScalarProperty Name="ProviderHeaderFormat" ColumnName="ProviderHeaderFormat" />
+                <ScalarProperty Name="ProviderRecordFormat" ColumnName="ProviderRecordFormat" />
+                <ScalarProperty Name="ProviderFooterFormat" ColumnName="ProviderFooterFormat" />
+                <ScalarProperty Name="PurchaseDailyLimit" ColumnName="PurchaseDailyLimit" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="InputFilePerBranch" ColumnName="InputFilePerBranch" />
+                <ScalarProperty Name="MaxCashTransPerDay" ColumnName="MaxCashTransPerDay" />
+                <ScalarProperty Name="CashLimit" ColumnName="CashLimit" />
+                <ScalarProperty Name="MaintenanceFee" ColumnName="MaintenanceFee" />
+                <ScalarProperty Name="CVK2_SPEC" ColumnName="CVK2_SPEC" />
+                <ScalarProperty Name="Config" ColumnName="Config" />
+                <ScalarProperty Name="EnvelopeFormat" ColumnName="EnvelopeFormat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Providers">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LogikardURL" ColumnName="LogikardURL" />
+                <ScalarProperty Name="LogikardUsername" ColumnName="LogikardUsername" />
+                <ScalarProperty Name="LogikardPassword" ColumnName="LogikardPassword" />
+                <ScalarProperty Name="LogikardPgpKey" ColumnName="LogikardPgpKey" />
+                <ScalarProperty Name="LogikardPgpKeyFileName" ColumnName="LogikardPgpKeyFileName" />
+                <ScalarProperty Name="LogikardPgpKeyExpDate" ColumnName="LogikardPgpKeyExpDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="CardDB_MRModel.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenariusTerminals">
+            <EntityTypeMapping TypeName="CardDB_MRModel.DenariusTerminals">
+              <MappingFragment StoreEntitySet="DenariusTerminals">
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

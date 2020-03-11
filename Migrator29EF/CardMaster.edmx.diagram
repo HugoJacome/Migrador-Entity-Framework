@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c651e9931ca740a29a6810209029a846" Name="Diagram1">
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.AGENCIA" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.APLICACION_ESTADO_TARJETA" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.ATM" Width="1.5" PointX="6" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.CIUDAD" Width="1.5" PointX="1.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.CLIENTE" Width="1.5" PointX="9" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.CLIENTE_CUENTA" Width="1.5" PointX="14.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.CUENTA" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.DATAFAST_ISO_CONFIGURE" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.DATAFAST_ISO_LOG" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.DATAFAST_RESPONSE_CODES" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.ESTADO_CUENTA" Width="1.5" PointX="9" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.ESTADO_TARJETA" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.ESTADOS_TARJETA" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.INPUT_FILE" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.INSTITUCION" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.LOG" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.LOG_ACTUALIZACIONES" Width="1.5" PointX="11.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.LOGAUDIT" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.MENU" Width="1.5" PointX="6.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.MENU_PERFIL" Width="1.5" PointX="9" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.MODELO_TARJETA" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.ORDEN" Width="1.5" PointX="3.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.PERFIL" Width="1.5" PointX="3.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.PROVINCIA" Width="1.5" PointX="1.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.PUNTOPAGO" Width="1.5" PointX="9" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TARJETA" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TARJETA_CUENTA" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TARJETA_PROFILE" Width="1.5" PointX="3.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TIPO_CUENTA" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TIPO_TARJETA" Width="1.5" PointX="3.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TIPOCANAL" Width="1.5" PointX="6.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TIPOENTIDAD" Width="1.5" PointX="1.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.TRANSACCION" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.USUARIO" Width="1.5" PointX="6" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.USUARIO_PPAGO" Width="1.5" PointX="11.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardMaster29OctubreMigrModel.SOLICITUD_TARJETA" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_AGENCIA_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_AGENCIA_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_ATM_AGENCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_AGE_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_PUNTOPAGO_AGE_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_AGE_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_AGE_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_PPAGO_AGE_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_APLICACION_ESTADO_TARJETA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CIUDAD_PROVINCIA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CLIENTE_CUENTA_CLI_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_ACTUALIZACIONES_CLI_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CLIENTE_CUENTA_CUENTA_NUMERO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CLIENTE_CUENTA_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CLIENTE_CUENTA_TIPO_CUENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CUENTA_ESTADO_CUENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CUENTA_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_CUENTA_TIPO_CUENTA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_ESTADOS_TARJETA_EST_TAR_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_EST_TAR_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_INSTITUCION_TEN_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_ORDEN_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_PUNTOPAGO_INST_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_CUENTA_INST_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_INST_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_PPAGO_INST_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_TAR_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_TRA_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_USU_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_ACTUALIZACIONES_TAR_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOG_ACTUALIZACIONES_TRA_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOGAUDIT_TRA_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_LOGAUDIT_USU_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_MEN_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_PER_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_ORD_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_PER_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_PUNTOPAGO_TER_CANAL" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_PPAGO_PPAGO_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_CUENTA_TAR_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_TARJETA" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_TARJETA_PROFILE" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_TIP_TAR_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_CUENTA_TAR_CTA_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_TARJETA_CUENTA_TIP_CTA_CODIGO" ManuallyRouted="false" />
+        <AssociationConnector Association="CardMaster29OctubreMigrModel.FK_USUARIO_PPAGO_USU_CODIGO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

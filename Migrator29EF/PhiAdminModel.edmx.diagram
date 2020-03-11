@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="153f44f3d7ab4a70afc227a339be9a2f" Name="Diagram1">
+        <EntityTypeShape EntityType="phiAdminModel.C__EFMigrationsHistory" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Acquirers" Width="1.5" PointX="11.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Activities" Width="1.5" PointX="9" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AspNetRoleClaims" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AspNetUserClaims" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AspNetUserLogins" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AspNetUsers" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AuditLog2" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.AuditLogs" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Authorizers" Width="1.5" PointX="11.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Branches" Width="1.5" PointX="9" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.CardModules" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Entities" Width="1.5" PointX="9" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.EntityActivities" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.GroupPermission" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Groups" Width="1.5" PointX="8.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Institutions" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Resources" Width="1.5" PointX="1.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.sysdiagrams" Width="1.5" PointX="13.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Transactions" Width="1.5" PointX="14" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.ApiKeys" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phiAdminModel.Logs" Width="1.5" PointX="11.25" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="phiAdminModel.FK_Transactions_Acquirers" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Logs_Activities" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_AspNetRoleClaims_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_AspNetUserClaims_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_AspNetUserLogins_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_AspNetUsers_Institutions_InstitutionId" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Logs_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Transactions_Authorizers1" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Agencies_Institutions_InstitutionId" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Logs_Agencies" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Logs_Entities" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Institutions_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK_Logs_Institutions" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.FK__Resources__Paren__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.ApplicationUserGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="phiAdminModel.EntitiesActivities" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

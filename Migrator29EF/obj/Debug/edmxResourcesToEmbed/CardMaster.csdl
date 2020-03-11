@@ -1,0 +1,1387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CardMaster29OctubreMigrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AGENCIA">
+    <Key>
+      <PropertyRef Name="AGE_CODIGO" />
+    </Key>
+    <Property Name="AGE_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AGE_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AGE_ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CIU_CODIGO" Type="Int32" />
+    <Property Name="AGE_UBICACION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="AGE_ZONA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CIUDAD" Relationship="Self.FK_AGENCIA_CIUDAD" FromRole="AGENCIA" ToRole="CIUDAD" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_AGENCIA_INSTITUCION" FromRole="AGENCIA" ToRole="INSTITUCION" />
+    <NavigationProperty Name="ATM" Relationship="Self.FK_ATM_AGENCIA" FromRole="AGENCIA" ToRole="ATM" />
+    <NavigationProperty Name="LOG" Relationship="Self.FK_LOG_AGE_CODIGO" FromRole="AGENCIA" ToRole="LOG" />
+    <NavigationProperty Name="PUNTOPAGO" Relationship="Self.FK_PUNTOPAGO_AGE_CODIGO" FromRole="AGENCIA" ToRole="PUNTOPAGO" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_AGE_CODIGO" FromRole="AGENCIA" ToRole="TARJETA" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_AGE_CODIGO" FromRole="AGENCIA" ToRole="USUARIO" />
+    <NavigationProperty Name="USUARIO_PPAGO" Relationship="Self.FK_USUARIO_PPAGO_AGE_CODIGO" FromRole="AGENCIA" ToRole="USUARIO_PPAGO" />
+  </EntityType>
+  <EntityType Name="APLICACION_ESTADO_TARJETA">
+    <Key>
+      <PropertyRef Name="EST_TAR_CODIGO" />
+    </Key>
+    <Property Name="EST_TAR_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="HABILITAR_TAR_NUMERO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TIP_TAR_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_EST_TAR_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_FECHA_SOLICITUD" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_CUPO_DIARIO_ATM" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_FECHA_EXPIRACION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_FECHA_ENTREGA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_NOMBRE_IMPRESO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_ORD_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_AGE_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_AGE_DESCRIPTION_E" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TAR_CELULAR" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CTA_NUMERO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_EST_CTA_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_TIP_CTA_CODIGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_NOMBRE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_IDENTIFICACION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_TELEFONO1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_TELEFONO2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_DIRECCION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HABILITAR_CLI_E_MAIL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="ESTADO_TARJETA" Relationship="Self.FK_APLICACION_ESTADO_TARJETA" FromRole="APLICACION_ESTADO_TARJETA" ToRole="ESTADO_TARJETA" />
+  </EntityType>
+  <EntityType Name="ATM">
+    <Key>
+      <PropertyRef Name="ATM_CODIGO" />
+    </Key>
+    <Property Name="ATM_CODIGO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AGE_CODIGO" Type="Int32" />
+    <Property Name="ATM_USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_ATM_AGENCIA" FromRole="ATM" ToRole="AGENCIA" />
+  </EntityType>
+  <EntityType Name="CIUDAD">
+    <Key>
+      <PropertyRef Name="CIU_CODIGO" />
+    </Key>
+    <Property Name="CIU_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="CIU_DESCRIPCION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRO_CODIGO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_AGENCIA_CIUDAD" FromRole="CIUDAD" ToRole="AGENCIA" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_CIUDAD_PROVINCIA" FromRole="CIUDAD" ToRole="PROVINCIA" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CLI_CODIGO" />
+    </Key>
+    <Property Name="CLI_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CLI_IDENTIFICACION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLI_NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLI_DIRECCCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CLI_TELEFONO1" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="CLI_TELEFONO2" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="CLI_E_MAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="CLI_FECHA_CREACION" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CLIENTE_CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_CLI_CODIGO" FromRole="CLIENTE" ToRole="CLIENTE_CUENTA" />
+    <NavigationProperty Name="LOG_ACTUALIZACIONES" Relationship="Self.FK_LOG_ACTUALIZACIONES_CLI_CODIGO" FromRole="CLIENTE" ToRole="LOG_ACTUALIZACIONES" />
+  </EntityType>
+  <EntityType Name="CLIENTE_CUENTA">
+    <Key>
+      <PropertyRef Name="CLI_CODIGO" />
+      <PropertyRef Name="CTA_NUMERO" />
+    </Key>
+    <Property Name="CLI_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="CTA_NUMERO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLI_CTA_OBSERVACION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIP_CTA_CODIGO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_CUENTA_CLI_CODIGO" FromRole="CLIENTE_CUENTA" ToRole="CLIENTE" />
+    <NavigationProperty Name="CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_CUENTA_NUMERO" FromRole="CLIENTE_CUENTA" ToRole="CUENTA" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_CLIENTE_CUENTA_INSTITUCION" FromRole="CLIENTE_CUENTA" ToRole="INSTITUCION" />
+    <NavigationProperty Name="TIPO_CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_TIPO_CUENTA" FromRole="CLIENTE_CUENTA" ToRole="TIPO_CUENTA" />
+  </EntityType>
+  <EntityType Name="CUENTA">
+    <Key>
+      <PropertyRef Name="CTA_NUMERO" />
+    </Key>
+    <Property Name="CTA_NUMERO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTA_FECHA_APERTURA" Type="DateTime" Precision="3" />
+    <Property Name="EST_CTA_CODIGO" Type="Int32" />
+    <Property Name="CTA_MONEDA" Type="Int32" />
+    <Property Name="TIP_CTA_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTA_SALDO_CONTABLE" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CTA_SALDO_DISPONIBLE" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="CLIENTE_CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_CUENTA_NUMERO" FromRole="CUENTA" ToRole="CLIENTE_CUENTA" />
+    <NavigationProperty Name="ESTADO_CUENTA" Relationship="Self.FK_CUENTA_ESTADO_CUENTA" FromRole="CUENTA" ToRole="ESTADO_CUENTA" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_CUENTA_INSTITUCION" FromRole="CUENTA" ToRole="INSTITUCION" />
+    <NavigationProperty Name="TIPO_CUENTA" Relationship="Self.FK_CUENTA_TIPO_CUENTA" FromRole="CUENTA" ToRole="TIPO_CUENTA" />
+  </EntityType>
+  <EntityType Name="DATAFAST_ISO_CONFIGURE">
+    <Key>
+      <PropertyRef Name="bitmapNro" />
+    </Key>
+    <Property Name="bitmapNro" Type="Int32" Nullable="false" />
+    <Property Name="vli" Type="Int32" />
+    <Property Name="longitud" Type="Int32" />
+    <Property Name="tipo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DATAFAST_ISO_LOG">
+    <Key>
+      <PropertyRef Name="Iso_MessageId" />
+      <PropertyRef Name="Iso_SystemTraceAuditNumber" />
+      <PropertyRef Name="Iso_LocalTranTime" />
+      <PropertyRef Name="Iso_LocalTranDate" />
+    </Key>
+    <Property Name="Iso_MessageId" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Iso_BitMap_A" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_BitMap_B" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_PrimaryAccountNumber" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_ProcessingCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_TransactionAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Iso_TransmitionDateTime" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="Iso_SystemTraceAuditNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Iso_LocalTranTime" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="Iso_LocalTranDate" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="Iso_ExpirationDate" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="Iso_SettlemenDate" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="Iso_LocalTranDateTime" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="Iso_MerchantType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_POSEntryMode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_CardSequenceNumber" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_AdquiringInstId" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_ForwardingInstId" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_Track2" Type="String" MaxLength="37" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_RetrievalReferenceNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_AuthIdResponse" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_ResponseCode" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_CardAcceptorTrmlId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_CardAcceptorId" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_CardAcceptorNameLocation" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_TrackI" Type="String" MaxLength="76" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_AdditionalDataPrivate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_CurrencyCode" Type="Int32" />
+    <Property Name="Iso_PINData" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_SecurityRelatedData" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_AdditionalAmounts" Type="String" MaxLength="91" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_IntegratedCircuitCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_ReservedporNationalUse_57" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_ReservedporNationalUse_58" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_PointofServiceData" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_NetworkData" Type="String" MaxLength="999" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_OriginalDataElements" Type="String" MaxLength="42" FixedLength="false" Unicode="false" />
+    <Property Name="Iso_LogStatus" Type="Int32" />
+    <Property Name="Iso_LocalDate" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="Iso_ResponseLocalDate" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="Iso_ResponseDetails" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DATAFAST_RESPONSE_CODES">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="CODE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ESTADO_CUENTA">
+    <Key>
+      <PropertyRef Name="EST_CTA_CODIGO" />
+    </Key>
+    <Property Name="EST_CTA_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="EST_CTA_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CUENTA" Relationship="Self.FK_CUENTA_ESTADO_CUENTA" FromRole="ESTADO_CUENTA" ToRole="CUENTA" />
+  </EntityType>
+  <EntityType Name="ESTADO_TARJETA">
+    <Key>
+      <PropertyRef Name="EST_TAR_CODIGO" />
+    </Key>
+    <Property Name="EST_TAR_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EST_TAR_DESCRIPCION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EST_TAR_TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EST_TAR_ISO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="EST_TAR_ISO_V1" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="APLICACION_ESTADO_TARJETA" Relationship="Self.FK_APLICACION_ESTADO_TARJETA" FromRole="ESTADO_TARJETA" ToRole="APLICACION_ESTADO_TARJETA" />
+    <NavigationProperty Name="ESTADOS_TARJETA" Relationship="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO" FromRole="ESTADO_TARJETA" ToRole="ESTADOS_TARJETA" />
+    <NavigationProperty Name="ESTADOS_TARJETA1" Relationship="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT" FromRole="ESTADO_TARJETA" ToRole="ESTADOS_TARJETA" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_EST_TAR_CODIGO" FromRole="ESTADO_TARJETA" ToRole="TARJETA" />
+  </EntityType>
+  <EntityType Name="ESTADOS_TARJETA">
+    <Key>
+      <PropertyRef Name="EST_TAR_CODIGO" />
+      <PropertyRef Name="EST_TAR_CODIGO_PARENT" />
+    </Key>
+    <Property Name="EST_TAR_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="EST_TAR_CODIGO_PARENT" Type="Int32" Nullable="false" />
+    <Property Name="EST_TAR_CODIGO_ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="ESTADO_TARJETA" Relationship="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO" FromRole="ESTADOS_TARJETA" ToRole="ESTADO_TARJETA" />
+    <NavigationProperty Name="ESTADO_TARJETA1" Relationship="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT" FromRole="ESTADOS_TARJETA" ToRole="ESTADO_TARJETA" />
+  </EntityType>
+  <EntityType Name="INPUT_FILE">
+    <Key>
+      <PropertyRef Name="ID_ARCHIVO" />
+    </Key>
+    <Property Name="ID_ARCHIVO" Type="Decimal" Precision="10" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE_ARCHIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_ARCHIVO" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="FECHA_ENCRIPCION" Type="DateTime" Precision="3" />
+    <Property Name="ENVIO_SFTP_ARCHIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ESTADO_ARCHIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="INSTITUCION">
+    <Key>
+      <PropertyRef Name="INST_CODIGO" />
+    </Key>
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INST_NOMBRE" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INST_ABA" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INST_PAIS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="INST_IP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="INST_PUERTO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="INST_CUPO_MAXIMO_ATM" Type="Int32" />
+    <Property Name="INST_CUPO_MAXIMO_POS" Type="Int32" />
+    <Property Name="INST_ANIO_VALIDEZ_TRJ" Type="Int32" />
+    <Property Name="INST_ULTIMA_TARJETA" Type="Int64" />
+    <Property Name="TEN_CODIGO" Type="Int32" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_AGENCIA_INSTITUCION" FromRole="INSTITUCION" ToRole="AGENCIA" />
+    <NavigationProperty Name="CLIENTE_CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_INSTITUCION" FromRole="INSTITUCION" ToRole="CLIENTE_CUENTA" />
+    <NavigationProperty Name="CUENTA" Relationship="Self.FK_CUENTA_INSTITUCION" FromRole="INSTITUCION" ToRole="CUENTA" />
+    <NavigationProperty Name="TIPOENTIDAD" Relationship="Self.FK_INSTITUCION_TEN_CODIGO" FromRole="INSTITUCION" ToRole="TIPOENTIDAD" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_ORDEN_INSTITUCION" FromRole="INSTITUCION" ToRole="ORDEN" />
+    <NavigationProperty Name="PUNTOPAGO" Relationship="Self.FK_PUNTOPAGO_INST_CODIGO" FromRole="INSTITUCION" ToRole="PUNTOPAGO" />
+    <NavigationProperty Name="TARJETA_CUENTA" Relationship="Self.FK_TARJETA_CUENTA_INST_CODIGO" FromRole="INSTITUCION" ToRole="TARJETA_CUENTA" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_INST_CODIGO" FromRole="INSTITUCION" ToRole="USUARIO" />
+    <NavigationProperty Name="USUARIO_PPAGO" Relationship="Self.FK_USUARIO_PPAGO_INST_CODIGO" FromRole="INSTITUCION" ToRole="USUARIO_PPAGO" />
+  </EntityType>
+  <EntityType Name="LOG">
+    <Key>
+      <PropertyRef Name="LOG_CODIGO" />
+      <PropertyRef Name="LOG_FECHORA" />
+      <PropertyRef Name="USU_CODIGO" />
+    </Key>
+    <Property Name="LOG_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOG_FECHORA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TER_CODIGO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_ID" Type="Int64" />
+    <Property Name="TRA_CODIGO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LOG_DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_EST_ANTERIOR" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="AGE_CODIGO" Type="Int32" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_LOG_AGE_CODIGO" FromRole="LOG" ToRole="AGENCIA" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_LOG_TAR_ID" FromRole="LOG" ToRole="TARJETA" />
+    <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_LOG_TRA_CODIGO" FromRole="LOG" ToRole="TRANSACCION" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_LOG_USU_CODIGO" FromRole="LOG" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="LOG_ACTUALIZACIONES">
+    <Key>
+      <PropertyRef Name="CLI_CODIGO" />
+      <PropertyRef Name="CLI_IDENTIFICACION" />
+      <PropertyRef Name="CTA_NUMERO" />
+      <PropertyRef Name="TAR_ID" />
+      <PropertyRef Name="TRA_CODIGO" />
+      <PropertyRef Name="FECHA_LOG" />
+    </Key>
+    <Property Name="CLI_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="CLI_IDENTIFICACION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CLI_NOMBRE" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTA_NUMERO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIP_CTA_CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CTA_TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CTA_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_ID" Type="Int64" Nullable="false" />
+    <Property Name="EST_TAR_CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIP_TAR_CODIGO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CUPO_DIARIO_ATM" Type="Int32" Nullable="false" />
+    <Property Name="TAR_CUPO_DIARIO_POS" Type="Int32" Nullable="false" />
+    <Property Name="AGE_DESCRIPCION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_FECHA_EXPIRACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TRA_CODIGO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA_LOG" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="USU_CODIGO" Type="Int32" />
+    <Property Name="TER_CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="Self.FK_LOG_ACTUALIZACIONES_CLI_CODIGO" FromRole="LOG_ACTUALIZACIONES" ToRole="CLIENTE" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_LOG_ACTUALIZACIONES_TAR_ID" FromRole="LOG_ACTUALIZACIONES" ToRole="TARJETA" />
+    <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_LOG_ACTUALIZACIONES_TRA_CODIGO" FromRole="LOG_ACTUALIZACIONES" ToRole="TRANSACCION" />
+  </EntityType>
+  <EntityType Name="LOGAUDIT">
+    <Key>
+      <PropertyRef Name="LOGCODIGO" />
+    </Key>
+    <Property Name="LOGCODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUCODIGO" Type="Int32" />
+    <Property Name="TRACODIGO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="LOGFECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOGTERMINAL" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LOGDESCRIPCION" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_LOGAUDIT_TRA_CODIGO" FromRole="LOGAUDIT" ToRole="TRANSACCION" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_LOGAUDIT_USU_CODIGO" FromRole="LOGAUDIT" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="MEN_CODIGO" />
+    </Key>
+    <Property Name="MEN_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEN_NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MEN_URL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MEN_ICONO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MEN_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MEN_PARENT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MEN_PARENT_ID" Type="Int32" />
+    <Property Name="MEN_ORDINAL" Type="Int32" />
+    <NavigationProperty Name="MENU_PERFIL" Relationship="Self.FK_MEN_CODIGO" FromRole="MENU" ToRole="MENU_PERFIL" />
+  </EntityType>
+  <EntityType Name="MENU_PERFIL">
+    <Key>
+      <PropertyRef Name="PER_CODIGO" />
+      <PropertyRef Name="MEN_CODIGO" />
+    </Key>
+    <Property Name="PER_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="MEN_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="MP_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MENU" Relationship="Self.FK_MEN_CODIGO" FromRole="MENU_PERFIL" ToRole="MENU" />
+    <NavigationProperty Name="PERFIL" Relationship="Self.FK_PER_CODIGO" FromRole="MENU_PERFIL" ToRole="PERFIL" />
+  </EntityType>
+  <EntityType Name="MODELO_TARJETA">
+    <Key>
+      <PropertyRef Name="MTJ_CODIGO" />
+      <PropertyRef Name="MTJ_TIPO" />
+    </Key>
+    <Property Name="MTJ_CODIGO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MTJ_DESCRIPCION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MTJ_IMAGEN" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MTJ_FECHA_CREACION" Type="DateTime" Precision="3" />
+    <Property Name="MTJ_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MTJ_TIPO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDEN">
+    <Key>
+      <PropertyRef Name="ORD_CODIGO" />
+    </Key>
+    <Property Name="ORD_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ORD_FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ORD_FECHA_CIERRE" Type="DateTime" Precision="3" />
+    <Property Name="ORD_TOTAL" Type="Int32" Nullable="false" />
+    <Property Name="ORD_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORD_TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_ORDEN_INSTITUCION" FromRole="ORDEN" ToRole="INSTITUCION" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_ORD_CODIGO" FromRole="ORDEN" ToRole="TARJETA" />
+  </EntityType>
+  <EntityType Name="PERFIL">
+    <Key>
+      <PropertyRef Name="PER_CODIGO" />
+    </Key>
+    <Property Name="PER_CODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PER_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PER_COMENTARIO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="PER_JERARQUIA" Type="Int32" Nullable="false" />
+    <Property Name="PER_PERMISO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MENU_PERFIL" Relationship="Self.FK_PER_CODIGO" FromRole="PERFIL" ToRole="MENU_PERFIL" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_PER_CODIGO" FromRole="PERFIL" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="PRO_CODIGO" />
+    </Key>
+    <Property Name="PRO_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="PRO_DESCRIPCION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRO_REGION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CIUDAD" Relationship="Self.FK_CIUDAD_PROVINCIA" FromRole="PROVINCIA" ToRole="CIUDAD" />
+  </EntityType>
+  <EntityType Name="PUNTOPAGO">
+    <Key>
+      <PropertyRef Name="PPACODIGO" />
+    </Key>
+    <Property Name="PPACODIGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ENTCODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SUCCODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TCACODIGO" Type="Int32" />
+    <Property Name="PPAUBICACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PPADEPENDENCIA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PPAESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PPAZONA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PPFECHA_EXPIRACION" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="PPHORA_EXPIRACION" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="PPHORAF_EXPIRACION" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="PMAC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PDIAS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_PUNTOPAGO_AGE_CODIGO" FromRole="PUNTOPAGO" ToRole="AGENCIA" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_PUNTOPAGO_INST_CODIGO" FromRole="PUNTOPAGO" ToRole="INSTITUCION" />
+    <NavigationProperty Name="TIPOCANAL" Relationship="Self.FK_PUNTOPAGO_TER_CANAL" FromRole="PUNTOPAGO" ToRole="TIPOCANAL" />
+    <NavigationProperty Name="USUARIO_PPAGO" Relationship="Self.FK_USUARIO_PPAGO_PPAGO_CODIGO" FromRole="PUNTOPAGO" ToRole="USUARIO_PPAGO" />
+  </EntityType>
+  <EntityType Name="TARJETA">
+    <Key>
+      <PropertyRef Name="TAR_ID" />
+    </Key>
+    <Property Name="TAR_NUMERO" Type="String" MaxLength="19" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIP_TAR_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="EST_TAR_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TAR_FECHA_SOLICITUD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TAR_OFFSET" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CUPO_DIARIO_ATM" Type="Int32" />
+    <Property Name="TAR_CUPO_DISP_ATM" Type="Int32" />
+    <Property Name="TAR_CUPO_DISP_POS" Type="Int32" />
+    <Property Name="TAR_CUPO_DIARIO_POS" Type="Int32" />
+    <Property Name="TAR_FECHA_EXPIRACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TAR_FECHA_ULTIMO_MOV" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TAR_FECHA_ENTREGA" Type="DateTime" Precision="3" />
+    <Property Name="TAR_FECHA_ACTIVACION" Type="DateTime" Precision="3" />
+    <Property Name="TAR_PIN_RETRIES" Type="Int32" />
+    <Property Name="TAR_NOMBRE_IMPRESO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORD_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="AGE_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="AGE_DESCRIPTION_E" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MTJ_TIPO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="MTJ_CODIGO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_TIPO_PAGO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TAR_TIPO_OP" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TAR_OP_SMS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TAR_TRANS_FREC" Type="Int32" />
+    <Property Name="TAR_TRANS_CONTA" Type="Int32" />
+    <Property Name="TAR_OFFSET_FIRST" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_CELULAR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_ValPIN_HSM_Flag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_FECHA_ULT_CAMBIOPIN" Type="DateTime" Precision="3" />
+    <Property Name="TAR_DIAS_VAL_PIN" Type="Int32" />
+    <Property Name="TAR_CVV" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_EMV_SEC" Type="Int32" />
+    <Property Name="TAR_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TAR_HASH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TAR_PROFILE" Type="Int32" />
+    <Property Name="TAR_FECHA_ULTIMO_RETIRO" Type="DateTime" Precision="3" />
+    <Property Name="TAR_NUMERO_E" Type="String" Unicode="false" FixedLength="false" MaxLength="19" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_TARJETA_AGE_CODIGO" FromRole="TARJETA" ToRole="AGENCIA" />
+    <NavigationProperty Name="ESTADO_TARJETA" Relationship="Self.FK_TARJETA_EST_TAR_CODIGO" FromRole="TARJETA" ToRole="ESTADO_TARJETA" />
+    <NavigationProperty Name="LOG" Relationship="Self.FK_LOG_TAR_ID" FromRole="TARJETA" ToRole="LOG" />
+    <NavigationProperty Name="LOG_ACTUALIZACIONES" Relationship="Self.FK_LOG_ACTUALIZACIONES_TAR_ID" FromRole="TARJETA" ToRole="LOG_ACTUALIZACIONES" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_TARJETA_ORD_CODIGO" FromRole="TARJETA" ToRole="ORDEN" />
+    <NavigationProperty Name="TARJETA_CUENTA" Relationship="Self.FK_TARJETA_CUENTA_TAR_ID" FromRole="TARJETA" ToRole="TARJETA_CUENTA" />
+    <NavigationProperty Name="TARJETA1" Relationship="Self.FK_TARJETA_TARJETA" FromRole="TARJETA" ToRole="TARJETA1" />
+    <NavigationProperty Name="TARJETA2" Relationship="Self.FK_TARJETA_TARJETA" FromRole="TARJETA1" ToRole="TARJETA" />
+    <NavigationProperty Name="TARJETA_PROFILE" Relationship="Self.FK_TARJETA_TARJETA_PROFILE" FromRole="TARJETA" ToRole="TARJETA_PROFILE" />
+    <NavigationProperty Name="TIPO_TARJETA" Relationship="Self.FK_TARJETA_TIP_TAR_CODIGO" FromRole="TARJETA" ToRole="TIPO_TARJETA" />
+  </EntityType>
+  <EntityType Name="TARJETA_CUENTA">
+    <Key>
+      <PropertyRef Name="CLI_CODIGO" />
+      <PropertyRef Name="CTA_NUMERO" />
+      <PropertyRef Name="TAR_ID" />
+    </Key>
+    <Property Name="CLI_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTA_NUMERO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CTA_TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CTA_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAR_CTA_OBSERVACIONES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TIP_CTA_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TAR_ID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_TARJETA_CUENTA_INST_CODIGO" FromRole="TARJETA_CUENTA" ToRole="INSTITUCION" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_CUENTA_TAR_ID" FromRole="TARJETA_CUENTA" ToRole="TARJETA" />
+    <NavigationProperty Name="TARJETA_CUENTA1" Relationship="Self.FK_TARJETA_CUENTA_TAR_CTA_TIPO" FromRole="TARJETA_CUENTA" ToRole="TARJETA_CUENTA1" />
+    <NavigationProperty Name="TARJETA_CUENTA2" Relationship="Self.FK_TARJETA_CUENTA_TAR_CTA_TIPO" FromRole="TARJETA_CUENTA1" ToRole="TARJETA_CUENTA" />
+    <NavigationProperty Name="TIPO_CUENTA" Relationship="Self.FK_TARJETA_CUENTA_TIP_CTA_CODIGO" FromRole="TARJETA_CUENTA" ToRole="TIPO_CUENTA" />
+  </EntityType>
+  <EntityType Name="TARJETA_PROFILE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IMK_AC_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CVK_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="VALIDAR_FECHA_T2" Type="Boolean" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ICVK_SPEC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_TARJETA_PROFILE" FromRole="TARJETA_PROFILE" ToRole="TARJETA" />
+  </EntityType>
+  <EntityType Name="TIPO_CUENTA">
+    <Key>
+      <PropertyRef Name="TIP_CTA_CODIGO" />
+    </Key>
+    <Property Name="TIP_CTA_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TIP_CTA_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CLIENTE_CUENTA" Relationship="Self.FK_CLIENTE_CUENTA_TIPO_CUENTA" FromRole="TIPO_CUENTA" ToRole="CLIENTE_CUENTA" />
+    <NavigationProperty Name="CUENTA" Relationship="Self.FK_CUENTA_TIPO_CUENTA" FromRole="TIPO_CUENTA" ToRole="CUENTA" />
+    <NavigationProperty Name="TARJETA_CUENTA" Relationship="Self.FK_TARJETA_CUENTA_TIP_CTA_CODIGO" FromRole="TIPO_CUENTA" ToRole="TARJETA_CUENTA" />
+  </EntityType>
+  <EntityType Name="TIPO_TARJETA">
+    <Key>
+      <PropertyRef Name="TIP_TAR_CODIGO" />
+    </Key>
+    <Property Name="TIP_TAR_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TIP_TAR_DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TARJETA" Relationship="Self.FK_TARJETA_TIP_TAR_CODIGO" FromRole="TIPO_TARJETA" ToRole="TARJETA" />
+  </EntityType>
+  <EntityType Name="TIPOCANAL">
+    <Key>
+      <PropertyRef Name="TCACODIGO" />
+    </Key>
+    <Property Name="TCACODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TCADESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TCAESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PUNTOPAGO" Relationship="Self.FK_PUNTOPAGO_TER_CANAL" FromRole="TIPOCANAL" ToRole="PUNTOPAGO" />
+  </EntityType>
+  <EntityType Name="TIPOENTIDAD">
+    <Key>
+      <PropertyRef Name="TENCODIGO" />
+    </Key>
+    <Property Name="TENCODIGO" Type="Int32" Nullable="false" />
+    <Property Name="TENDESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_INSTITUCION_TEN_CODIGO" FromRole="TIPOENTIDAD" ToRole="INSTITUCION" />
+  </EntityType>
+  <EntityType Name="TRANSACCION">
+    <Key>
+      <PropertyRef Name="TRA_CODIGO" />
+    </Key>
+    <Property Name="TRA_CODIGO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRA_DESCRIPCION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRA_SELECCION" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="EST_TAR_CODIGO" Type="Int32" />
+    <NavigationProperty Name="LOG" Relationship="Self.FK_LOG_TRA_CODIGO" FromRole="TRANSACCION" ToRole="LOG" />
+    <NavigationProperty Name="LOG_ACTUALIZACIONES" Relationship="Self.FK_LOG_ACTUALIZACIONES_TRA_CODIGO" FromRole="TRANSACCION" ToRole="LOG_ACTUALIZACIONES" />
+    <NavigationProperty Name="LOGAUDIT" Relationship="Self.FK_LOGAUDIT_TRA_CODIGO" FromRole="TRANSACCION" ToRole="LOGAUDIT" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="USU_CODIGO" />
+    </Key>
+    <Property Name="USU_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="USU_ALIAS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USU_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USU_CEDULA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USU_CLAVE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USU_ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USU_FECAPER" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="USU_FEC_CAMB_CLAVE" Type="DateTime" Precision="3" />
+    <Property Name="PER_CODIGO" Type="Int32" Nullable="false" />
+    <Property Name="INST_CODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="AGE_CODIGO" Type="Int32" />
+    <Property Name="USU_CLAVE_ACTUALIZACION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USU_PERMISO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USU_FLAG_PIN" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="SALT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="SHA_PWD" Type="String" MaxLength="88" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_USUARIO_AGE_CODIGO" FromRole="USUARIO" ToRole="AGENCIA" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_USUARIO_INST_CODIGO" FromRole="USUARIO" ToRole="INSTITUCION" />
+    <NavigationProperty Name="LOG" Relationship="Self.FK_LOG_USU_CODIGO" FromRole="USUARIO" ToRole="LOG" />
+    <NavigationProperty Name="LOGAUDIT" Relationship="Self.FK_LOGAUDIT_USU_CODIGO" FromRole="USUARIO" ToRole="LOGAUDIT" />
+    <NavigationProperty Name="PERFIL" Relationship="Self.FK_USUARIO_PER_CODIGO" FromRole="USUARIO" ToRole="PERFIL" />
+    <NavigationProperty Name="USUARIO_PPAGO" Relationship="Self.FK_USUARIO_PPAGO_USU_CODIGO" FromRole="USUARIO" ToRole="USUARIO_PPAGO" />
+  </EntityType>
+  <EntityType Name="USUARIO_PPAGO">
+    <Key>
+      <PropertyRef Name="USUCODIGO" />
+      <PropertyRef Name="ENTCODIGO" />
+      <PropertyRef Name="SUCCODIGO" />
+      <PropertyRef Name="PPACODIGO" />
+    </Key>
+    <Property Name="USUCODIGO" Type="Int32" Nullable="false" />
+    <Property Name="ENTCODIGO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SUCCODIGO" Type="Int32" Nullable="false" />
+    <Property Name="PPACODIGO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AGENCIA" Relationship="Self.FK_USUARIO_PPAGO_AGE_CODIGO" FromRole="USUARIO_PPAGO" ToRole="AGENCIA" />
+    <NavigationProperty Name="INSTITUCION" Relationship="Self.FK_USUARIO_PPAGO_INST_CODIGO" FromRole="USUARIO_PPAGO" ToRole="INSTITUCION" />
+    <NavigationProperty Name="PUNTOPAGO" Relationship="Self.FK_USUARIO_PPAGO_PPAGO_CODIGO" FromRole="USUARIO_PPAGO" ToRole="PUNTOPAGO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_PPAGO_USU_CODIGO" FromRole="USUARIO_PPAGO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_TARJETA">
+    <Key>
+      <PropertyRef Name="CLI_IDENTIFICACION" />
+    </Key>
+    <Property Name="CLI_IDENTIFICACION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CTA_NUMERO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EST_SOLICITUD" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DES_SOLICITUD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_AGENCIA_CIUDAD">
+    <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="0..1" />
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CIUDAD">
+        <PropertyRef Name="CIU_CODIGO" />
+      </Principal>
+      <Dependent Role="AGENCIA">
+        <PropertyRef Name="CIU_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AGENCIA_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="AGENCIA">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATM_AGENCIA">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="0..1" />
+    <End Role="ATM" Type="Self.ATM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="ATM">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_AGE_CODIGO">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="0..1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNTOPAGO_AGE_CODIGO">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="1" />
+    <End Role="PUNTOPAGO" Type="Self.PUNTOPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="PUNTOPAGO">
+        <PropertyRef Name="SUCCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_AGE_CODIGO">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_AGE_CODIGO">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="0..1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PPAGO_AGE_CODIGO">
+    <End Role="AGENCIA" Type="Self.AGENCIA" Multiplicity="1" />
+    <End Role="USUARIO_PPAGO" Type="Self.USUARIO_PPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENCIA">
+        <PropertyRef Name="AGE_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO_PPAGO">
+        <PropertyRef Name="SUCCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APLICACION_ESTADO_TARJETA">
+    <End Role="ESTADO_TARJETA" Type="Self.ESTADO_TARJETA" Multiplicity="1" />
+    <End Role="APLICACION_ESTADO_TARJETA" Type="Self.APLICACION_ESTADO_TARJETA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Principal>
+      <Dependent Role="APLICACION_ESTADO_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CIUDAD_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="CIUDAD" Type="Self.CIUDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="PRO_CODIGO" />
+      </Principal>
+      <Dependent Role="CIUDAD">
+        <PropertyRef Name="PRO_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_CUENTA_CLI_CODIGO">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="CLIENTE_CUENTA" Type="Self.CLIENTE_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CLI_CODIGO" />
+      </Principal>
+      <Dependent Role="CLIENTE_CUENTA">
+        <PropertyRef Name="CLI_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_ACTUALIZACIONES_CLI_CODIGO">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="LOG_ACTUALIZACIONES" Type="Self.LOG_ACTUALIZACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CLI_CODIGO" />
+      </Principal>
+      <Dependent Role="LOG_ACTUALIZACIONES">
+        <PropertyRef Name="CLI_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_CUENTA_CUENTA_NUMERO">
+    <End Role="CUENTA" Type="Self.CUENTA" Multiplicity="1" />
+    <End Role="CLIENTE_CUENTA" Type="Self.CLIENTE_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUENTA">
+        <PropertyRef Name="CTA_NUMERO" />
+      </Principal>
+      <Dependent Role="CLIENTE_CUENTA">
+        <PropertyRef Name="CTA_NUMERO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_CUENTA_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="CLIENTE_CUENTA" Type="Self.CLIENTE_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="CLIENTE_CUENTA">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_CUENTA_TIPO_CUENTA">
+    <End Role="TIPO_CUENTA" Type="Self.TIPO_CUENTA" Multiplicity="1" />
+    <End Role="CLIENTE_CUENTA" Type="Self.CLIENTE_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Principal>
+      <Dependent Role="CLIENTE_CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUENTA_ESTADO_CUENTA">
+    <End Role="ESTADO_CUENTA" Type="Self.ESTADO_CUENTA" Multiplicity="0..1" />
+    <End Role="CUENTA" Type="Self.CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_CUENTA">
+        <PropertyRef Name="EST_CTA_CODIGO" />
+      </Principal>
+      <Dependent Role="CUENTA">
+        <PropertyRef Name="EST_CTA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUENTA_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="CUENTA" Type="Self.CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="CUENTA">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUENTA_TIPO_CUENTA">
+    <End Role="TIPO_CUENTA" Type="Self.TIPO_CUENTA" Multiplicity="1" />
+    <End Role="CUENTA" Type="Self.CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Principal>
+      <Dependent Role="CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOS_TARJETA_EST_TAR_CODIGO">
+    <End Role="ESTADO_TARJETA" Type="Self.ESTADO_TARJETA" Multiplicity="1" />
+    <End Role="ESTADOS_TARJETA" Type="Self.ESTADOS_TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Principal>
+      <Dependent Role="ESTADOS_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT">
+    <End Role="ESTADO_TARJETA" Type="Self.ESTADO_TARJETA" Multiplicity="1" />
+    <End Role="ESTADOS_TARJETA" Type="Self.ESTADOS_TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Principal>
+      <Dependent Role="ESTADOS_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO_PARENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_EST_TAR_CODIGO">
+    <End Role="ESTADO_TARJETA" Type="Self.ESTADO_TARJETA" Multiplicity="1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="EST_TAR_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSTITUCION_TEN_CODIGO">
+    <End Role="TIPOENTIDAD" Type="Self.TIPOENTIDAD" Multiplicity="0..1" />
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOENTIDAD">
+        <PropertyRef Name="TENCODIGO" />
+      </Principal>
+      <Dependent Role="INSTITUCION">
+        <PropertyRef Name="TEN_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="0..1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNTOPAGO_INST_CODIGO">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="PUNTOPAGO" Type="Self.PUNTOPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="PUNTOPAGO">
+        <PropertyRef Name="ENTCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_CUENTA_INST_CODIGO">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="TARJETA_CUENTA" Type="Self.TARJETA_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA_CUENTA">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_INST_CODIGO">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="0..1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="INST_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PPAGO_INST_CODIGO">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="USUARIO_PPAGO" Type="Self.USUARIO_PPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="INST_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO_PPAGO">
+        <PropertyRef Name="ENTCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_TAR_ID">
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="0..1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA">
+        <PropertyRef Name="TAR_ID" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="TAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_TRA_CODIGO">
+    <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSACCION">
+        <PropertyRef Name="TRA_CODIGO" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="TRA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_USU_CODIGO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USU_CODIGO" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="USU_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_ACTUALIZACIONES_TAR_ID">
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="1" />
+    <End Role="LOG_ACTUALIZACIONES" Type="Self.LOG_ACTUALIZACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA">
+        <PropertyRef Name="TAR_ID" />
+      </Principal>
+      <Dependent Role="LOG_ACTUALIZACIONES">
+        <PropertyRef Name="TAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_ACTUALIZACIONES_TRA_CODIGO">
+    <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="1" />
+    <End Role="LOG_ACTUALIZACIONES" Type="Self.LOG_ACTUALIZACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSACCION">
+        <PropertyRef Name="TRA_CODIGO" />
+      </Principal>
+      <Dependent Role="LOG_ACTUALIZACIONES">
+        <PropertyRef Name="TRA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGAUDIT_TRA_CODIGO">
+    <End Role="TRANSACCION" Type="Self.TRANSACCION" Multiplicity="0..1" />
+    <End Role="LOGAUDIT" Type="Self.LOGAUDIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANSACCION">
+        <PropertyRef Name="TRA_CODIGO" />
+      </Principal>
+      <Dependent Role="LOGAUDIT">
+        <PropertyRef Name="TRACODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOGAUDIT_USU_CODIGO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="LOGAUDIT" Type="Self.LOGAUDIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USU_CODIGO" />
+      </Principal>
+      <Dependent Role="LOGAUDIT">
+        <PropertyRef Name="USUCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MEN_CODIGO">
+    <End Role="MENU" Type="Self.MENU" Multiplicity="1" />
+    <End Role="MENU_PERFIL" Type="Self.MENU_PERFIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU">
+        <PropertyRef Name="MEN_CODIGO" />
+      </Principal>
+      <Dependent Role="MENU_PERFIL">
+        <PropertyRef Name="MEN_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PER_CODIGO">
+    <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="1" />
+    <End Role="MENU_PERFIL" Type="Self.MENU_PERFIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFIL">
+        <PropertyRef Name="PER_CODIGO" />
+      </Principal>
+      <Dependent Role="MENU_PERFIL">
+        <PropertyRef Name="PER_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_ORD_CODIGO">
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORDEN">
+        <PropertyRef Name="ORD_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="ORD_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PER_CODIGO">
+    <End Role="PERFIL" Type="Self.PERFIL" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERFIL">
+        <PropertyRef Name="PER_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="PER_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNTOPAGO_TER_CANAL">
+    <End Role="TIPOCANAL" Type="Self.TIPOCANAL" Multiplicity="0..1" />
+    <End Role="PUNTOPAGO" Type="Self.PUNTOPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOCANAL">
+        <PropertyRef Name="TCACODIGO" />
+      </Principal>
+      <Dependent Role="PUNTOPAGO">
+        <PropertyRef Name="TCACODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PPAGO_PPAGO_CODIGO">
+    <End Role="PUNTOPAGO" Type="Self.PUNTOPAGO" Multiplicity="1" />
+    <End Role="USUARIO_PPAGO" Type="Self.USUARIO_PPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PUNTOPAGO">
+        <PropertyRef Name="PPACODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO_PPAGO">
+        <PropertyRef Name="PPACODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_CUENTA_TAR_ID">
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="1" />
+    <End Role="TARJETA_CUENTA" Type="Self.TARJETA_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA">
+        <PropertyRef Name="TAR_ID" />
+      </Principal>
+      <Dependent Role="TARJETA_CUENTA">
+        <PropertyRef Name="TAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_TARJETA">
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="1" />
+    <End Role="TARJETA1" Type="Self.TARJETA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA">
+        <PropertyRef Name="TAR_ID" />
+      </Principal>
+      <Dependent Role="TARJETA1">
+        <PropertyRef Name="TAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_TARJETA_PROFILE">
+    <End Role="TARJETA_PROFILE" Type="Self.TARJETA_PROFILE" Multiplicity="0..1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA_PROFILE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="TAR_PROFILE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_TIP_TAR_CODIGO">
+    <End Role="TIPO_TARJETA" Type="Self.TIPO_TARJETA" Multiplicity="1" />
+    <End Role="TARJETA" Type="Self.TARJETA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_TARJETA">
+        <PropertyRef Name="TIP_TAR_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA">
+        <PropertyRef Name="TIP_TAR_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_CUENTA_TAR_CTA_TIPO">
+    <End Role="TARJETA_CUENTA" Type="Self.TARJETA_CUENTA" Multiplicity="1" />
+    <End Role="TARJETA_CUENTA1" Type="Self.TARJETA_CUENTA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TARJETA_CUENTA">
+        <PropertyRef Name="CLI_CODIGO" />
+        <PropertyRef Name="CTA_NUMERO" />
+        <PropertyRef Name="TAR_ID" />
+      </Principal>
+      <Dependent Role="TARJETA_CUENTA1">
+        <PropertyRef Name="CLI_CODIGO" />
+        <PropertyRef Name="CTA_NUMERO" />
+        <PropertyRef Name="TAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TARJETA_CUENTA_TIP_CTA_CODIGO">
+    <End Role="TIPO_CUENTA" Type="Self.TIPO_CUENTA" Multiplicity="1" />
+    <End Role="TARJETA_CUENTA" Type="Self.TARJETA_CUENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Principal>
+      <Dependent Role="TARJETA_CUENTA">
+        <PropertyRef Name="TIP_CTA_CODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PPAGO_USU_CODIGO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_PPAGO" Type="Self.USUARIO_PPAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USU_CODIGO" />
+      </Principal>
+      <Dependent Role="USUARIO_PPAGO">
+        <PropertyRef Name="USUCODIGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CardMasterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AGENCIA" EntityType="Self.AGENCIA" />
+    <EntitySet Name="APLICACION_ESTADO_TARJETA" EntityType="Self.APLICACION_ESTADO_TARJETA" />
+    <EntitySet Name="ATM" EntityType="Self.ATM" />
+    <EntitySet Name="CIUDAD" EntityType="Self.CIUDAD" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+    <EntitySet Name="CLIENTE_CUENTA" EntityType="Self.CLIENTE_CUENTA" />
+    <EntitySet Name="CUENTA" EntityType="Self.CUENTA" />
+    <EntitySet Name="DATAFAST_ISO_CONFIGURE" EntityType="Self.DATAFAST_ISO_CONFIGURE" />
+    <EntitySet Name="DATAFAST_ISO_LOG" EntityType="Self.DATAFAST_ISO_LOG" />
+    <EntitySet Name="DATAFAST_RESPONSE_CODES" EntityType="Self.DATAFAST_RESPONSE_CODES" />
+    <EntitySet Name="ESTADO_CUENTA" EntityType="Self.ESTADO_CUENTA" />
+    <EntitySet Name="ESTADO_TARJETA" EntityType="Self.ESTADO_TARJETA" />
+    <EntitySet Name="ESTADOS_TARJETA" EntityType="Self.ESTADOS_TARJETA" />
+    <EntitySet Name="INPUT_FILE" EntityType="Self.INPUT_FILE" />
+    <EntitySet Name="INSTITUCION" EntityType="Self.INSTITUCION" />
+    <EntitySet Name="LOG" EntityType="Self.LOG" />
+    <EntitySet Name="LOG_ACTUALIZACIONES" EntityType="Self.LOG_ACTUALIZACIONES" />
+    <EntitySet Name="LOGAUDIT" EntityType="Self.LOGAUDIT" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" />
+    <EntitySet Name="MENU_PERFIL" EntityType="Self.MENU_PERFIL" />
+    <EntitySet Name="MODELO_TARJETA" EntityType="Self.MODELO_TARJETA" />
+    <EntitySet Name="ORDEN" EntityType="Self.ORDEN" />
+    <EntitySet Name="PERFIL" EntityType="Self.PERFIL" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+    <EntitySet Name="PUNTOPAGO" EntityType="Self.PUNTOPAGO" />
+    <EntitySet Name="TARJETA" EntityType="Self.TARJETA" />
+    <EntitySet Name="TARJETA_CUENTA" EntityType="Self.TARJETA_CUENTA" />
+    <EntitySet Name="TARJETA_PROFILE" EntityType="Self.TARJETA_PROFILE" />
+    <EntitySet Name="TIPO_CUENTA" EntityType="Self.TIPO_CUENTA" />
+    <EntitySet Name="TIPO_TARJETA" EntityType="Self.TIPO_TARJETA" />
+    <EntitySet Name="TIPOCANAL" EntityType="Self.TIPOCANAL" />
+    <EntitySet Name="TIPOENTIDAD" EntityType="Self.TIPOENTIDAD" />
+    <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <EntitySet Name="USUARIO_PPAGO" EntityType="Self.USUARIO_PPAGO" />
+    <EntitySet Name="SOLICITUD_TARJETA" EntityType="Self.SOLICITUD_TARJETA" />
+    <AssociationSet Name="FK_AGENCIA_CIUDAD" Association="Self.FK_AGENCIA_CIUDAD">
+      <End Role="CIUDAD" EntitySet="CIUDAD" />
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AGENCIA_INSTITUCION" Association="Self.FK_AGENCIA_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATM_AGENCIA" Association="Self.FK_ATM_AGENCIA">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="ATM" EntitySet="ATM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_AGE_CODIGO" Association="Self.FK_LOG_AGE_CODIGO">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNTOPAGO_AGE_CODIGO" Association="Self.FK_PUNTOPAGO_AGE_CODIGO">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="PUNTOPAGO" EntitySet="PUNTOPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_AGE_CODIGO" Association="Self.FK_TARJETA_AGE_CODIGO">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_AGE_CODIGO" Association="Self.FK_USUARIO_AGE_CODIGO">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PPAGO_AGE_CODIGO" Association="Self.FK_USUARIO_PPAGO_AGE_CODIGO">
+      <End Role="AGENCIA" EntitySet="AGENCIA" />
+      <End Role="USUARIO_PPAGO" EntitySet="USUARIO_PPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APLICACION_ESTADO_TARJETA" Association="Self.FK_APLICACION_ESTADO_TARJETA">
+      <End Role="ESTADO_TARJETA" EntitySet="ESTADO_TARJETA" />
+      <End Role="APLICACION_ESTADO_TARJETA" EntitySet="APLICACION_ESTADO_TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CIUDAD_PROVINCIA" Association="Self.FK_CIUDAD_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="CIUDAD" EntitySet="CIUDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_CUENTA_CLI_CODIGO" Association="Self.FK_CLIENTE_CUENTA_CLI_CODIGO">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="CLIENTE_CUENTA" EntitySet="CLIENTE_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_ACTUALIZACIONES_CLI_CODIGO" Association="Self.FK_LOG_ACTUALIZACIONES_CLI_CODIGO">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="LOG_ACTUALIZACIONES" EntitySet="LOG_ACTUALIZACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_CUENTA_CUENTA_NUMERO" Association="Self.FK_CLIENTE_CUENTA_CUENTA_NUMERO">
+      <End Role="CUENTA" EntitySet="CUENTA" />
+      <End Role="CLIENTE_CUENTA" EntitySet="CLIENTE_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_CUENTA_INSTITUCION" Association="Self.FK_CLIENTE_CUENTA_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="CLIENTE_CUENTA" EntitySet="CLIENTE_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_CUENTA_TIPO_CUENTA" Association="Self.FK_CLIENTE_CUENTA_TIPO_CUENTA">
+      <End Role="TIPO_CUENTA" EntitySet="TIPO_CUENTA" />
+      <End Role="CLIENTE_CUENTA" EntitySet="CLIENTE_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUENTA_ESTADO_CUENTA" Association="Self.FK_CUENTA_ESTADO_CUENTA">
+      <End Role="ESTADO_CUENTA" EntitySet="ESTADO_CUENTA" />
+      <End Role="CUENTA" EntitySet="CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUENTA_INSTITUCION" Association="Self.FK_CUENTA_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="CUENTA" EntitySet="CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUENTA_TIPO_CUENTA" Association="Self.FK_CUENTA_TIPO_CUENTA">
+      <End Role="TIPO_CUENTA" EntitySet="TIPO_CUENTA" />
+      <End Role="CUENTA" EntitySet="CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOS_TARJETA_EST_TAR_CODIGO" Association="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO">
+      <End Role="ESTADO_TARJETA" EntitySet="ESTADO_TARJETA" />
+      <End Role="ESTADOS_TARJETA" EntitySet="ESTADOS_TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT" Association="Self.FK_ESTADOS_TARJETA_EST_TAR_CODIGO_PARENT">
+      <End Role="ESTADO_TARJETA" EntitySet="ESTADO_TARJETA" />
+      <End Role="ESTADOS_TARJETA" EntitySet="ESTADOS_TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_EST_TAR_CODIGO" Association="Self.FK_TARJETA_EST_TAR_CODIGO">
+      <End Role="ESTADO_TARJETA" EntitySet="ESTADO_TARJETA" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSTITUCION_TEN_CODIGO" Association="Self.FK_INSTITUCION_TEN_CODIGO">
+      <End Role="TIPOENTIDAD" EntitySet="TIPOENTIDAD" />
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_INSTITUCION" Association="Self.FK_ORDEN_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNTOPAGO_INST_CODIGO" Association="Self.FK_PUNTOPAGO_INST_CODIGO">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="PUNTOPAGO" EntitySet="PUNTOPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_CUENTA_INST_CODIGO" Association="Self.FK_TARJETA_CUENTA_INST_CODIGO">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="TARJETA_CUENTA" EntitySet="TARJETA_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_INST_CODIGO" Association="Self.FK_USUARIO_INST_CODIGO">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PPAGO_INST_CODIGO" Association="Self.FK_USUARIO_PPAGO_INST_CODIGO">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="USUARIO_PPAGO" EntitySet="USUARIO_PPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_TAR_ID" Association="Self.FK_LOG_TAR_ID">
+      <End Role="TARJETA" EntitySet="TARJETA" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_TRA_CODIGO" Association="Self.FK_LOG_TRA_CODIGO">
+      <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_USU_CODIGO" Association="Self.FK_LOG_USU_CODIGO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_ACTUALIZACIONES_TAR_ID" Association="Self.FK_LOG_ACTUALIZACIONES_TAR_ID">
+      <End Role="TARJETA" EntitySet="TARJETA" />
+      <End Role="LOG_ACTUALIZACIONES" EntitySet="LOG_ACTUALIZACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_ACTUALIZACIONES_TRA_CODIGO" Association="Self.FK_LOG_ACTUALIZACIONES_TRA_CODIGO">
+      <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+      <End Role="LOG_ACTUALIZACIONES" EntitySet="LOG_ACTUALIZACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGAUDIT_TRA_CODIGO" Association="Self.FK_LOGAUDIT_TRA_CODIGO">
+      <End Role="TRANSACCION" EntitySet="TRANSACCION" />
+      <End Role="LOGAUDIT" EntitySet="LOGAUDIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOGAUDIT_USU_CODIGO" Association="Self.FK_LOGAUDIT_USU_CODIGO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="LOGAUDIT" EntitySet="LOGAUDIT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MEN_CODIGO" Association="Self.FK_MEN_CODIGO">
+      <End Role="MENU" EntitySet="MENU" />
+      <End Role="MENU_PERFIL" EntitySet="MENU_PERFIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PER_CODIGO" Association="Self.FK_PER_CODIGO">
+      <End Role="PERFIL" EntitySet="PERFIL" />
+      <End Role="MENU_PERFIL" EntitySet="MENU_PERFIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_ORD_CODIGO" Association="Self.FK_TARJETA_ORD_CODIGO">
+      <End Role="ORDEN" EntitySet="ORDEN" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PER_CODIGO" Association="Self.FK_USUARIO_PER_CODIGO">
+      <End Role="PERFIL" EntitySet="PERFIL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNTOPAGO_TER_CANAL" Association="Self.FK_PUNTOPAGO_TER_CANAL">
+      <End Role="TIPOCANAL" EntitySet="TIPOCANAL" />
+      <End Role="PUNTOPAGO" EntitySet="PUNTOPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PPAGO_PPAGO_CODIGO" Association="Self.FK_USUARIO_PPAGO_PPAGO_CODIGO">
+      <End Role="PUNTOPAGO" EntitySet="PUNTOPAGO" />
+      <End Role="USUARIO_PPAGO" EntitySet="USUARIO_PPAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_CUENTA_TAR_ID" Association="Self.FK_TARJETA_CUENTA_TAR_ID">
+      <End Role="TARJETA" EntitySet="TARJETA" />
+      <End Role="TARJETA_CUENTA" EntitySet="TARJETA_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_TARJETA" Association="Self.FK_TARJETA_TARJETA">
+      <End Role="TARJETA" EntitySet="TARJETA" />
+      <End Role="TARJETA1" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_TARJETA_PROFILE" Association="Self.FK_TARJETA_TARJETA_PROFILE">
+      <End Role="TARJETA_PROFILE" EntitySet="TARJETA_PROFILE" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_TIP_TAR_CODIGO" Association="Self.FK_TARJETA_TIP_TAR_CODIGO">
+      <End Role="TIPO_TARJETA" EntitySet="TIPO_TARJETA" />
+      <End Role="TARJETA" EntitySet="TARJETA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_CUENTA_TAR_CTA_TIPO" Association="Self.FK_TARJETA_CUENTA_TAR_CTA_TIPO">
+      <End Role="TARJETA_CUENTA" EntitySet="TARJETA_CUENTA" />
+      <End Role="TARJETA_CUENTA1" EntitySet="TARJETA_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TARJETA_CUENTA_TIP_CTA_CODIGO" Association="Self.FK_TARJETA_CUENTA_TIP_CTA_CODIGO">
+      <End Role="TIPO_CUENTA" EntitySet="TIPO_CUENTA" />
+      <End Role="TARJETA_CUENTA" EntitySet="TARJETA_CUENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PPAGO_USU_CODIGO" Association="Self.FK_USUARIO_PPAGO_USU_CODIGO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_PPAGO" EntitySet="USUARIO_PPAGO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

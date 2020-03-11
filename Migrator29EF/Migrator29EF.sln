@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrator29EF", "Migrator29EF.csproj", "{9DCBD1EA-5457-461B-8500-DA1764F01FAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DCBD1EA-5457-461B-8500-DA1764F01FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DCBD1EA-5457-461B-8500-DA1764F01FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DCBD1EA-5457-461B-8500-DA1764F01FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DCBD1EA-5457-461B-8500-DA1764F01FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {017F5956-EC20-462D-96A6-E256F564711C}
+	EndGlobalSection
+EndGlobal

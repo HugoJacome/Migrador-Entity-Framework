@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6260275ff814412988cc1de6a295f508" Name="Diagram1">
+        <EntityTypeShape EntityType="CardDB_MRModel.BINs" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.CardBatches" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.CardRequests" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Cards" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.CardsAccounts" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Clients" Width="1.5" PointX="2.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Orders" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.OrdersTags" Width="1.5" PointX="8.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Prefixes" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Profiles" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Providers" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.Tags" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CardDB_MRModel.DenariusTerminals" Width="1.5" PointX="10.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="CardDB_MRModel.FK__Tmp_Profi__BINId__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_Prefixes_Bins" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_Cards1_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_Cards1_Profiles1" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_CardsAccounts1_Cards1" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_OrdersTags_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK_OrdersTags_Tags" ManuallyRouted="false" />
+        <AssociationConnector Association="CardDB_MRModel.FK__Tmp_Profi__Provi__7A3223E8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
